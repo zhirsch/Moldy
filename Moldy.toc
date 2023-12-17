@@ -11,6 +11,7 @@ CircularBuffer.lua
 Deformat.lua
 Enchants.lua
 GearScore.lua
+GuildColors.lua
 Quiet.lua
 Reputation.lua
 ShowCaster.lua
