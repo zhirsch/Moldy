@@ -1,5 +1,9 @@
 -- TODO: Disambiguate enchants that have the same text (and therefore appear multiple times in this table).
 local map = {
+    [17]   = { [INVSLOT_CHEST]    = "item:4265",
+               [INVSLOT_LEGS]     = "item:4265",
+               [INVSLOT_HAND]     = "item:4265",
+               [INVSLOT_FEET]     = "item:4265" },
     [24]   = { [INVSLOT_CHEST]    = "item:38769" },
     [41]   = { [INVSLOT_CHEST]    = "item:38766",
                [INVSLOT_WRIST]    = "item:38679" },
