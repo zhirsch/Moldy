@@ -2,7 +2,7 @@ Moldy.CircularBuffer = {
     new = function(size)
         assert(size > 1)
         local self = { buffer = {}, found = nil, next = 1, size = size }
-        local cls  = { __index = Moldy.CircularBuffer.prototype }
+        local cls = { __index = Moldy.CircularBuffer.prototype }
         return setmetatable(self, cls)
     end,
     rotate = function(i, n)
@@ -11,10 +11,12 @@ Moldy.CircularBuffer = {
 }
 Moldy.CircularBuffer.prototype = {
     len = function(self)
-        return #(self.buffer)
+        return #self.buffer
     end,
     peek = function(self, i)
-        if i > self:len() then return nil end
+        if i > self:len() then
+            return nil
+        end
         local ir = Moldy.CircularBuffer.rotate((self.next - 1) + i, self:len())
         return self.buffer[ir]
     end,
@@ -24,7 +26,9 @@ Moldy.CircularBuffer.prototype = {
     end,
     find = function(self, predicate)
         -- cache the last found item so that repetitive lookups are fast
-        if self.found and predicate(self.found) then return self.found end
+        if self.found and predicate(self.found) then
+            return self.found
+        end
         for item in self:iter() do
             if item and predicate(item) then
                 self.found = item

@@ -14,21 +14,21 @@ function SlashCmdList.MOLDY(command)
 		Moldy:Printf("Chat sounds disabled")
 		return
 	end
-	Moldy:Printf("Unknown command: "..command)
+	Moldy:Printf("Unknown command: " .. command)
 end
 
 local prefix = "Interface/AddOns/Moldy/media/"
 local sounds = {
-    ["CHAT_MSG_BN_WHISPER"]           = "whisper.ogg",
-    ["CHAT_MSG_GUILD"]                = "guild.ogg",
-    ["CHAT_MSG_INSTANCE_CHAT"]        = "party.ogg",
-    ["CHAT_MSG_INSTANCE_CHAT_LEADER"] = "party.ogg",
-    ["CHAT_MSG_OFFICER"]              = "guild.ogg",
-    ["CHAT_MSG_PARTY"]                = "party.ogg",
-    ["CHAT_MSG_PARTY_LEADER"]         = "party.ogg",
-    ["CHAT_MSG_RAID"]                 = "party.ogg",
-    ["CHAT_MSG_RAID_LEADER"]          = "party.ogg",
-    ["CHAT_MSG_WHISPER"]              = "whisper.ogg",
+	["CHAT_MSG_BN_WHISPER"] = "whisper.ogg",
+	["CHAT_MSG_GUILD"] = "guild.ogg",
+	["CHAT_MSG_INSTANCE_CHAT"] = "party.ogg",
+	["CHAT_MSG_INSTANCE_CHAT_LEADER"] = "party.ogg",
+	["CHAT_MSG_OFFICER"] = "guild.ogg",
+	["CHAT_MSG_PARTY"] = "party.ogg",
+	["CHAT_MSG_PARTY_LEADER"] = "party.ogg",
+	["CHAT_MSG_RAID"] = "party.ogg",
+	["CHAT_MSG_RAID_LEADER"] = "party.ogg",
+	["CHAT_MSG_WHISPER"] = "whisper.ogg",
 }
 
 local function Play(file)
@@ -39,6 +39,6 @@ end
 
 function MoldyChatSounds:OnEnable()
 	for event, file in pairs(sounds) do
-		self:RegisterEvent(event, Play, prefix..file)
+		self:RegisterEvent(event, Play, prefix .. file)
 	end
 end

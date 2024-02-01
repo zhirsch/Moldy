@@ -18,8 +18,8 @@ local function SpellHook(tooltip, ...)
 	AddDoubleLine(tooltip, "Spell ID:", spellId)
 end
 
-MoldyShowCaster:SecureHook(GameTooltip, "SetUnitAura",      AuraHook)
-MoldyShowCaster:SecureHook(GameTooltip, "SetSpellByID",     SpellHook)
-MoldyShowCaster:SecureHook(GameTooltip, "AddSpellByID",     SpellHook)
+MoldyShowCaster:SecureHook(GameTooltip, "SetUnitAura", AuraHook)
+MoldyShowCaster:SecureHook(GameTooltip, "SetSpellByID", SpellHook)
+MoldyShowCaster:SecureHook(GameTooltip, "AddSpellByID", SpellHook)
 MoldyShowCaster:SecureHook(GameTooltip, "SetSpellBookItem", SpellHook)
-MoldyShowCaster:SecureHook(GameTooltip, "SetAction",        SpellHook)
+MoldyShowCaster:SecureHook(GameTooltip, "SetAction", SpellHook)

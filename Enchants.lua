@@ -27,7 +27,7 @@ local Enchants
 Enchants = {
     new = function()
         local self = { map = {} }
-        local cls  = { __index = Enchants.prototype }
+        local cls = { __index = Enchants.prototype }
         return setmetatable(self, cls)
     end,
 }
@@ -35,23 +35,28 @@ Enchants.prototype = {
     add = function(self, enchantId, link, predicate)
         local enchants = GetOrCreateTableEntry(self.map, enchantId, {})
         table.insert(enchants, {
-            link      = Scrolls[link] or link,
-            predicate = predicate or function(...) return true end,
+            link = Scrolls[link] or link,
+            predicate = predicate or function(...)
+                return true
+            end,
         })
     end,
     get = function(self, link, slot)
         local enchantId = string.match(link, "item:%d+:(%d+):")
-        if not enchantId then return nil end
+        if not enchantId then
+            return nil
+        end
         local enchants = GetOrCreateTableEntry(self.map, tonumber(enchantId), {})
-        local _, enchant = FindInTableIf(enchants, function(e) return e.predicate(link, slot) end)
+        local _, enchant = FindInTableIf(enchants, function(e)
+            return e.predicate(link, slot)
+        end)
         if not enchant then
             Moldy:Printf("Unknown enchant %s in slot %d on item %s", enchantId, slot, link)
-            return "enchant:"..enchantId
+            return "enchant:" .. enchantId
         end
         return enchant.link
     end,
 }
-
 
 Moldy.Enchants = Enchants.new()
 --[[
@@ -253,7 +258,7 @@ Moldy.Enchants.map = {
 ]]
 
 local function Or(...)
-    local predicates = {...}
+    local predicates = { ... }
     return function(...)
         for _, predicate in ipairs(predicates) do
             if predicate(...) then
@@ -265,52 +270,54 @@ local function Or(...)
 end
 
 local function Slot(allowed)
-    return function(link, slot) return allowed == slot end
+    return function(link, slot)
+        return allowed == slot
+    end
 end
 
 local function IsTwoHandedWeapon(link, slot)
     return false
 end
 
-Moldy.Enchants:add(  16, "item:2313")
-Moldy.Enchants:add(  17, "item:4265")
-Moldy.Enchants:add(  24, "item:38769")
-Moldy.Enchants:add(  41, "item:38679",  Slot(INVSLOT_WRIST))
-Moldy.Enchants:add(  41, "item:38766",  Slot(INVSLOT_CHEST))
-Moldy.Enchants:add(  44, "item:38767")
-Moldy.Enchants:add(  63, "item:38798")
-Moldy.Enchants:add(  65, "item:38770")
-Moldy.Enchants:add(  66, "item:38771",  Slot(INVSLOT_WRIST))
-Moldy.Enchants:add(  66, "item:38785",  Slot(INVSLOT_FEET))
-Moldy.Enchants:add(  66, "item:38787",  Slot(INVSLOT_OFFHAND))
-Moldy.Enchants:add( 241, "item:38772",  IsTwoHandedWeapon)
-Moldy.Enchants:add( 241, "item:38794")
-Moldy.Enchants:add( 242, "item:38773")
-Moldy.Enchants:add( 247, "item:38777",  Slot(INVSLOT_WRIST))
-Moldy.Enchants:add( 247, "item:38786",  Slot(INVSLOT_FEET))
-Moldy.Enchants:add( 247, "item:38789",  Slot(INVSLOT_BACK))
-Moldy.Enchants:add( 248, "item:38817")
-Moldy.Enchants:add( 803, "item:38838")
-Moldy.Enchants:add( 823, "item:38797")
-Moldy.Enchants:add( 846, "item:19971",  Slot(INVSLOT_MAINHAND))
-Moldy.Enchants:add( 846, "item:50816",  Slot(INVSLOT_HAND))
-Moldy.Enchants:add( 847, "item:38804")
-Moldy.Enchants:add( 911, "item:38837")
-Moldy.Enchants:add( 983, "item:38959",  Slot(INVSLOT_BACK))
-Moldy.Enchants:add( 983, "item:38976",  Slot(INVSLOT_FEET))
+Moldy.Enchants:add(16, "item:2313")
+Moldy.Enchants:add(17, "item:4265")
+Moldy.Enchants:add(24, "item:38769")
+Moldy.Enchants:add(41, "item:38679", Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(41, "item:38766", Slot(INVSLOT_CHEST))
+Moldy.Enchants:add(44, "item:38767")
+Moldy.Enchants:add(63, "item:38798")
+Moldy.Enchants:add(65, "item:38770")
+Moldy.Enchants:add(66, "item:38771", Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(66, "item:38785", Slot(INVSLOT_FEET))
+Moldy.Enchants:add(66, "item:38787", Slot(INVSLOT_OFFHAND))
+Moldy.Enchants:add(241, "item:38772", IsTwoHandedWeapon)
+Moldy.Enchants:add(241, "item:38794")
+Moldy.Enchants:add(242, "item:38773")
+Moldy.Enchants:add(247, "item:38777", Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(247, "item:38786", Slot(INVSLOT_FEET))
+Moldy.Enchants:add(247, "item:38789", Slot(INVSLOT_BACK))
+Moldy.Enchants:add(248, "item:38817")
+Moldy.Enchants:add(803, "item:38838")
+Moldy.Enchants:add(823, "item:38797")
+Moldy.Enchants:add(846, "item:19971", Slot(INVSLOT_MAINHAND))
+Moldy.Enchants:add(846, "item:50816", Slot(INVSLOT_HAND))
+Moldy.Enchants:add(847, "item:38804")
+Moldy.Enchants:add(911, "item:38837")
+Moldy.Enchants:add(983, "item:38959", Slot(INVSLOT_BACK))
+Moldy.Enchants:add(983, "item:38976", Slot(INVSLOT_FEET))
 Moldy.Enchants:add(1075, "item:38966")
 Moldy.Enchants:add(1099, "item:44457")
 Moldy.Enchants:add(1128, "item:44455")
 Moldy.Enchants:add(1144, "item:38928")
-Moldy.Enchants:add(1147, "item:38961",  Slot(INVSLOT_FEET))
-Moldy.Enchants:add(1147, "item:38980",  Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(1147, "item:38961", Slot(INVSLOT_FEET))
+Moldy.Enchants:add(1147, "item:38980", Slot(INVSLOT_WRIST))
 Moldy.Enchants:add(1597, "item:44469")
 Moldy.Enchants:add(1600, "item:38971")
 Moldy.Enchants:add(1883, "item:38852")
-Moldy.Enchants:add(1888, "item:38858",  Slot(INVSLOT_BACK))
-Moldy.Enchants:add(1888, "item:38907",  Slot(INVSLOT_OFFHAND))
-Moldy.Enchants:add(1891, "item:38865",  Slot(INVSLOT_CHEST))
-Moldy.Enchants:add(1891, "item:38898",  Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(1888, "item:38858", Slot(INVSLOT_BACK))
+Moldy.Enchants:add(1888, "item:38907", Slot(INVSLOT_OFFHAND))
+Moldy.Enchants:add(1891, "item:38865", Slot(INVSLOT_CHEST))
+Moldy.Enchants:add(1891, "item:38898", Slot(INVSLOT_WRIST))
 Moldy.Enchants:add(1900, "item:38873")
 Moldy.Enchants:add(1951, "item:38978")
 Moldy.Enchants:add(1952, "item:38954")
@@ -318,17 +325,17 @@ Moldy.Enchants:add(1953, "item:39002")
 Moldy.Enchants:add(2326, "item:38997")
 Moldy.Enchants:add(2332, "item:44470")
 Moldy.Enchants:add(2381, "item:38962")
-Moldy.Enchants:add(2564, "item:38880",  Or(Slot(INVSLOT_MAINHAND), Slot(INVSLOT_OFFHAND)))
-Moldy.Enchants:add(2564, "item:38890",  Slot(INVSLOT_HAND))
+Moldy.Enchants:add(2564, "item:38880", Or(Slot(INVSLOT_MAINHAND), Slot(INVSLOT_OFFHAND)))
+Moldy.Enchants:add(2564, "item:38890", Slot(INVSLOT_HAND))
 Moldy.Enchants:add(2613, "item:38885")
 Moldy.Enchants:add(2621, "item:38894")
 Moldy.Enchants:add(2622, "item:38895")
-Moldy.Enchants:add(2649, "item:38902",  Slot(INVSLOT_WRIST))
-Moldy.Enchants:add(2649, "item:38909",  Slot(INVSLOT_FEET))
+Moldy.Enchants:add(2649, "item:38902", Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(2649, "item:38909", Slot(INVSLOT_FEET))
 Moldy.Enchants:add(2650, "item:38903")
 Moldy.Enchants:add(2659, "item:38911")
-Moldy.Enchants:add(2661, "item:38913",  Slot(INVSLOT_CHEST))
-Moldy.Enchants:add(2661, "item:38987",  Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(2661, "item:38913", Slot(INVSLOT_CHEST))
+Moldy.Enchants:add(2661, "item:38987", Slot(INVSLOT_WRIST))
 Moldy.Enchants:add(2669, "item:38921")
 Moldy.Enchants:add(2679, "item:38901")
 Moldy.Enchants:add(2723, "item:23765")
@@ -340,8 +347,8 @@ Moldy.Enchants:add(2999, "item:29186")
 Moldy.Enchants:add(3002, "item:29191")
 Moldy.Enchants:add(3003, "item:29192")
 Moldy.Enchants:add(3011, "item:29534")
-Moldy.Enchants:add(3222, "item:38947",  Or(Slot(INVSLOT_MAINHAND), Slot(INVSLOT_OFFHAND)))
-Moldy.Enchants:add(3222, "item:38967",  Slot(INVSLOT_HAND))
+Moldy.Enchants:add(3222, "item:38947", Or(Slot(INVSLOT_MAINHAND), Slot(INVSLOT_OFFHAND)))
+Moldy.Enchants:add(3222, "item:38967", Slot(INVSLOT_HAND))
 Moldy.Enchants:add(3230, "item:38950")
 Moldy.Enchants:add(3231, "item:38951")
 Moldy.Enchants:add(3231, "item:38984")

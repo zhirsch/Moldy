@@ -21,13 +21,14 @@ local function ToggleAll()
 end
 
 local function DelayToggleAll()
-	C_Timer.After(5, function() ToggleAll() end)
+	C_Timer.After(5, function()
+		ToggleAll()
+	end)
 end
 
 function MoldyQuiet:OnEnable()
-	self:RegisterEvent("ZONE_CHANGED",          ToggleAll)
-	self:RegisterEvent("ZONE_CHANGED_INDOORS",  ToggleAll)
+	self:RegisterEvent("ZONE_CHANGED", ToggleAll)
+	self:RegisterEvent("ZONE_CHANGED_INDOORS", ToggleAll)
 	self:RegisterEvent("ZONE_CHANGED_NEW_AREA", ToggleAll)
 	self:RegisterEvent("PLAYER_ENTERING_WORLD", DelayToggleAll)
 end
-

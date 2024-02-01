@@ -20,7 +20,7 @@ local sequences = {
 local function get_first_pattern(s)
 	local first_pos, first_pattern
 	for pattern in next, sequences do
-		local pos = s:find("%%%%"..pattern)
+		local pos = s:find("%%%%" .. pattern)
 		if pos and (not first_pos or pos < first_pos) then
 			first_pos, first_pattern = pos, pattern
 		end
@@ -40,8 +40,10 @@ local function unpattern_unordered(unpattern, f)
 	local i = 1
 	while true do
 		local pattern = get_first_pattern(unpattern)
-		if not pattern then return unpattern, i > 1 end
-			unpattern = unpattern:gsub("%%%%" .. pattern, "(" .. sequences[pattern] .. ")", 1)
+		if not pattern then
+			return unpattern, i > 1
+		end
+		unpattern = unpattern:gsub("%%%%" .. pattern, "(" .. sequences[pattern] .. ")", 1)
 		f[i] = (pattern ~= "c" and pattern ~= "s")
 		i = i + 1
 	end
@@ -51,15 +53,17 @@ local function unpattern_ordered(unpattern, f)
 	local i = 1
 	while true do
 		local pattern = get_indexed_pattern(unpattern, i)
-		if not pattern then return unpattern, i > 1 end
-			unpattern = unpattern:gsub("%%%%" .. i .. "%%%$" .. pattern, "(" .. sequences[pattern] .. ")", 1)
+		if not pattern then
+			return unpattern, i > 1
+		end
+		unpattern = unpattern:gsub("%%%%" .. i .. "%%%$" .. pattern, "(" .. sequences[pattern] .. ")", 1)
 		f[i] = (pattern ~= "c" and pattern ~= "s")
 		i = i + 1
 	end
 end
 
 local function GetPattern(pattern)
-	local unpattern, f, matched = '^' .. pattern:gsub("([%(%)%.%*%+%-%[%]%?%^%$%%])", "%%%1") .. '$', {}
+	local unpattern, f, matched = "^" .. pattern:gsub("([%(%)%.%*%+%-%[%]%?%^%$%%])", "%%%1") .. "$", {}
 	if not pattern:find("%1$", nil, true) then
 		unpattern, matched = unpattern_unordered(unpattern, f)
 		if not matched then
@@ -70,14 +74,18 @@ local function GetPattern(pattern)
 				local l = ("v%d"):format(index)
 				locals[index] = l
 				if number then
-					returns[#returns + 1] = "n("..l..")"
+					returns[#returns + 1] = "n(" .. l .. ")"
 				else
 					returns[#returns + 1] = l
 				end
 			end
 			locals = tconcat(locals, ",")
 			returns = tconcat(returns, ",")
-			local code = ("local m, n = string.match, tonumber return function(s) local %s = m(s, %q) return %s end"):format(locals, unpattern, returns)
+			local code = ("local m, n = string.match, tonumber return function(s) local %s = m(s, %q) return %s end"):format(
+				locals,
+				unpattern,
+				returns
+			)
 			return assert(loadstring(code))()
 		end
 	else
@@ -86,20 +94,27 @@ local function GetPattern(pattern)
 			return donothing
 		else
 			local i, o = 1, {}
-			pattern:gsub("%%(%d)%$", function(w) o[i] = tonumber(w); i = i + 1; end)
+			pattern:gsub("%%(%d)%$", function(w)
+				o[i] = tonumber(w)
+				i = i + 1
+			end)
 			local sorted_locals, returns = {}, {}
 			for index, number in ipairs(f) do
 				local l = ("v%d"):format(index)
 				sorted_locals[index] = ("v%d"):format(o[index])
 				if number then
-					returns[#returns + 1] = "n("..l..")"
+					returns[#returns + 1] = "n(" .. l .. ")"
 				else
 					returns[#returns + 1] = l
 				end
 			end
 			sorted_locals = tconcat(sorted_locals, ",")
 			returns = tconcat(returns, ",")
-			local code =("local m, n = string.match, tonumber return function(s) local %s = m(s, %q) return %s end"):format(sorted_locals, unpattern, returns)
+			local code = ("local m, n = string.match, tonumber return function(s) local %s = m(s, %q) return %s end"):format(
+				sorted_locals,
+				unpattern,
+				returns
+			)
 			return assert(loadstring(code))()
 		end
 	end
