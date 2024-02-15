@@ -20,7 +20,11 @@ if IsClassic() or IsTBC() then
         ["item:38796"] = "spell:13529",
         ["item:38797"] = "spell:13536",
         ["item:38804"] = "spell:13626",
+        ["item:38817"] = "spell:13661",
         ["item:38817"] = "spell:7782",
+        ["item:38824"] = "spell:13700",
+        ["item:38825"] = "spell:13746",
+        ["item:38837"] = "spell:13890",
     }
 end
 
@@ -303,6 +307,9 @@ Moldy.Enchants:add(823, "item:38797")
 Moldy.Enchants:add(846, "item:19971", Slot(INVSLOT_MAINHAND))
 Moldy.Enchants:add(846, "item:50816", Slot(INVSLOT_HAND))
 Moldy.Enchants:add(847, "item:38804")
+Moldy.Enchants:add(856, "item:38817", Slot(INVSLOT_WRIST))
+Moldy.Enchants:add(866, "item:38824")
+Moldy.Enchants:add(884, "item:38825")
 Moldy.Enchants:add(911, "item:38837")
 Moldy.Enchants:add(943, "item:38796")
 Moldy.Enchants:add(983, "item:38959", Slot(INVSLOT_BACK))
