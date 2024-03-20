@@ -10,6 +10,7 @@ ChatSounds.lua
 CircularBuffer.lua
 Deformat.lua
 Enchants.lua
+Enchants_data.lua
 GearScore.lua
 GuildColors.lua
 Quiet.lua
