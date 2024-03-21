@@ -1,3 +1,5 @@
+-- Sharpen Blade
+Moldy.Enchants:add(1, "spell:2605", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Armor +8
 Moldy.Enchants:add(15, "item:2304", {"INVTYPE_CHEST", "INVTYPE_FEET", "INVTYPE_HAND", "INVTYPE_LEGS", "INVTYPE_ROBE"})
 -- Armor +16
@@ -34,10 +36,10 @@ Moldy.Enchants:add(63, "item:38798", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 Moldy.Enchants:add(65, "item:38770", {"INVTYPE_CLOAK"})
 -- Enchant Bracer - Minor Stamina
 Moldy.Enchants:add(66, "item:38771", {"INVTYPE_WRIST"})
--- Enchant Shield - Minor Stamina
-Moldy.Enchants:add(66, "item:38787", {"INVTYPE_SHIELD"})
 -- Enchant Boots - Minor Stamina
 Moldy.Enchants:add(66, "item:38785", {"INVTYPE_FEET"})
+-- Enchant Shield - Minor Stamina
+Moldy.Enchants:add(66, "item:38787", {"INVTYPE_SHIELD"})
 -- Enchant Weapon - Lesser Striking
 Moldy.Enchants:add(241, "item:38794", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Chest - Lesser Health
@@ -46,12 +48,12 @@ Moldy.Enchants:add(242, "item:38773", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 Moldy.Enchants:add(243, "item:38774", {"INVTYPE_WRIST"})
 -- Enchant Chest - Lesser Mana
 Moldy.Enchants:add(246, "item:38776", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
+-- Enchant Bracer - Minor Agility
+Moldy.Enchants:add(247, "item:38777", {"INVTYPE_WRIST"})
 -- Enchant Boots - Minor Agility
 Moldy.Enchants:add(247, "item:38786", {"INVTYPE_FEET"})
 -- Enchant Cloak - Minor Agility
 Moldy.Enchants:add(247, "item:38789", {"INVTYPE_CLOAK"})
--- Enchant Bracer - Minor Agility
-Moldy.Enchants:add(247, "item:38777", {"INVTYPE_WRIST"})
 -- Enchant Bracer - Minor Strength
 Moldy.Enchants:add(248, "item:38778", {"INVTYPE_WRIST"})
 -- Enchant Weapon - Minor Beastslayer
@@ -88,12 +90,12 @@ Moldy.Enchants:add(684, "item:38933", {"INVTYPE_HAND"})
 Moldy.Enchants:add(723, "item:38781", {"INVTYPE_2HWEAPON"})
 -- Enchant Bracer - Lesser Intellect
 Moldy.Enchants:add(723, "item:38803", {"INVTYPE_WRIST"})
--- Enchant Boots - Lesser Stamina
-Moldy.Enchants:add(724, "item:38810", {"INVTYPE_FEET"})
 -- Enchant Bracer - Lesser Stamina
 Moldy.Enchants:add(724, "item:38793", {"INVTYPE_WRIST"})
 -- Enchant Shield - Lesser Stamina
 Moldy.Enchants:add(724, "item:38805", {"INVTYPE_SHIELD"})
+-- Enchant Boots - Lesser Stamina
+Moldy.Enchants:add(724, "item:38810", {"INVTYPE_FEET"})
 -- Enchant Cloak - Lesser Protection
 Moldy.Enchants:add(744, "item:38790", {"INVTYPE_CLOAK"})
 -- Enchant Cloak - Minor Protection
@@ -112,28 +114,28 @@ Moldy.Enchants:add(843, "item:38799", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 Moldy.Enchants:add(844, "item:38800", {"INVTYPE_HAND"})
 -- Enchant Gloves - Herbalism
 Moldy.Enchants:add(845, "item:38801", {"INVTYPE_HAND"})
--- Enchant Gloves - Angler
-Moldy.Enchants:add(846, "item:50816", {"INVTYPE_HAND"})
 -- Eternium Fishing Line
 Moldy.Enchants:add(846, "item:19971", {"INVTYPE_2HWEAPON"})
+-- Enchant Gloves - Angler
+Moldy.Enchants:add(846, "item:50816", {"INVTYPE_HAND"})
 -- Enchant Chest - Minor Stats
 Moldy.Enchants:add(847, "item:38804", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Shield - Lesser Protection
 Moldy.Enchants:add(848, "item:38791", {"INVTYPE_SHIELD"})
 -- Enchant Cloak - Defense
 Moldy.Enchants:add(848, "item:38806", {"INVTYPE_CLOAK"})
--- Enchant Cloak - Lesser Agility
-Moldy.Enchants:add(849, "item:38835", {"INVTYPE_CLOAK"})
 -- Enchant Boots - Lesser Agility
 Moldy.Enchants:add(849, "item:38807", {"INVTYPE_FEET"})
+-- Enchant Cloak - Lesser Agility
+Moldy.Enchants:add(849, "item:38835", {"INVTYPE_CLOAK"})
 -- Enchant Chest - Greater Health
 Moldy.Enchants:add(850, "item:38808", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
--- Enchant Boots - Spirit
-Moldy.Enchants:add(851, "item:38864", {"INVTYPE_FEET"})
 -- Enchant Bracer - Spirit
 Moldy.Enchants:add(851, "item:38809", {"INVTYPE_WRIST"})
 -- Enchant Shield - Spirit
 Moldy.Enchants:add(851, "item:38816", {"INVTYPE_SHIELD"})
+-- Enchant Boots - Spirit
+Moldy.Enchants:add(851, "item:38864", {"INVTYPE_FEET"})
 -- Enchant Bracer - Stamina
 Moldy.Enchants:add(852, "item:38812", {"INVTYPE_WRIST"})
 -- Enchant Shield - Stamina
@@ -168,10 +170,10 @@ Moldy.Enchants:add(904, "item:38844", {"INVTYPE_FEET"})
 Moldy.Enchants:add(905, "item:38829", {"INVTYPE_WRIST"})
 -- Enchant Gloves - Advanced Mining
 Moldy.Enchants:add(906, "item:38831", {"INVTYPE_HAND"})
--- Enchant Shield - Greater Spirit
-Moldy.Enchants:add(907, "item:38839", {"INVTYPE_SHIELD"})
 -- Enchant Bracer - Greater Spirit
 Moldy.Enchants:add(907, "item:38832", {"INVTYPE_WRIST"})
+-- Enchant Shield - Greater Spirit
+Moldy.Enchants:add(907, "item:38839", {"INVTYPE_SHIELD"})
 -- Enchant Chest - Superior Health
 Moldy.Enchants:add(908, "item:38833", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Gloves - Advanced Herbalism
@@ -200,10 +202,10 @@ Moldy.Enchants:add(927, "item:38857", {"INVTYPE_HAND"})
 Moldy.Enchants:add(928, "item:38847", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Bracer - Greater Stamina
 Moldy.Enchants:add(929, "item:38849", {"INVTYPE_WRIST"})
--- Enchant Boots - Greater Stamina
-Moldy.Enchants:add(929, "item:38862", {"INVTYPE_FEET"})
 -- Enchant Shield - Greater Stamina
 Moldy.Enchants:add(929, "item:38861", {"INVTYPE_SHIELD"})
+-- Enchant Boots - Greater Stamina
+Moldy.Enchants:add(929, "item:38862", {"INVTYPE_FEET"})
 -- Enchant Gloves - Riding Skill
 Moldy.Enchants:add(930, "item:38850", {"INVTYPE_HAND"})
 -- Enchant Gloves - Minor Haste
@@ -230,10 +232,10 @@ Moldy.Enchants:add(1119, "item:38968", {"INVTYPE_WRIST"})
 Moldy.Enchants:add(1128, "item:44455", {"INVTYPE_SHIELD"})
 -- Enchant Chest - Major Spirit
 Moldy.Enchants:add(1144, "item:38928", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
--- Enchant Bracers - Major Spirit
-Moldy.Enchants:add(1147, "item:38980", {"INVTYPE_WRIST"})
 -- Enchant Boots - Greater Spirit
 Moldy.Enchants:add(1147, "item:38961", {"INVTYPE_FEET"})
+-- Enchant Bracers - Major Spirit
+Moldy.Enchants:add(1147, "item:38980", {"INVTYPE_WRIST"})
 -- Enchant Weapon - Major Spirit
 Moldy.Enchants:add(1183, "item:38916", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Cloak - Greater Arcane Resistance
@@ -314,10 +316,10 @@ Moldy.Enchants:add(1886, "item:38855", {"INVTYPE_WRIST"})
 Moldy.Enchants:add(1887, "item:38856", {"INVTYPE_HAND"})
 -- Enchant Boots - Greater Agility
 Moldy.Enchants:add(1887, "item:38863", {"INVTYPE_FEET"})
--- Enchant Shield - Resistance
-Moldy.Enchants:add(1888, "item:38907", {"INVTYPE_SHIELD"})
 -- Enchant Cloak - Greater Resistance
 Moldy.Enchants:add(1888, "item:38858", {"INVTYPE_CLOAK"})
+-- Enchant Shield - Resistance
+Moldy.Enchants:add(1888, "item:38907", {"INVTYPE_SHIELD"})
 -- Enchant Cloak - Superior Defense
 Moldy.Enchants:add(1889, "item:38859", {"INVTYPE_CLOAK"})
 -- Enchant Shield - Vitality
@@ -346,10 +348,10 @@ Moldy.Enchants:add(1900, "item:38873", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "I
 Moldy.Enchants:add(1903, "item:38874", {"INVTYPE_2HWEAPON"})
 -- Enchant 2H Weapon - Major Intellect
 Moldy.Enchants:add(1904, "item:38875", {"INVTYPE_2HWEAPON"})
--- Enchant Chest - Defense
-Moldy.Enchants:add(1951, "item:38999", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Cloak - Titanweave
 Moldy.Enchants:add(1951, "item:38978", {"INVTYPE_CLOAK"})
+-- Enchant Chest - Defense
+Moldy.Enchants:add(1951, "item:38999", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Shield - Defense
 Moldy.Enchants:add(1952, "item:38954", {"INVTYPE_SHIELD"})
 -- Enchant Chest - Greater Defense
@@ -480,8 +482,6 @@ Moldy.Enchants:add(2661, "item:38987", {"INVTYPE_WRIST"})
 Moldy.Enchants:add(2662, "item:38914", {"INVTYPE_CLOAK"})
 -- Enchant Cloak - Major Resistance
 Moldy.Enchants:add(2664, "item:38915", {"INVTYPE_CLOAK"})
--- Enchant Weapon - Major Spirit
-Moldy.Enchants:add(2665, "item:38916", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Major Intellect
 Moldy.Enchants:add(2666, "item:38918", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant 2H Weapon - Savagery
@@ -642,10 +642,10 @@ Moldy.Enchants:add(3095, "item:30845", {"INVTYPE_HEAD"})
 Moldy.Enchants:add(3096, "item:30846", {"INVTYPE_HEAD"})
 -- Enchant Chest - Restore Mana Prime
 Moldy.Enchants:add(3150, "item:38929", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
--- Enchant Gloves - Major Agility
-Moldy.Enchants:add(3222, "item:38967", {"INVTYPE_HAND"})
 -- Enchant Weapon - Greater Agility
 Moldy.Enchants:add(3222, "item:38947", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+-- Enchant Gloves - Major Agility
+Moldy.Enchants:add(3222, "item:38967", {"INVTYPE_HAND"})
 -- Adamantite Weapon Chain
 Moldy.Enchants:add(3223, "item:33185", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Executioner
@@ -706,6 +706,8 @@ Moldy.Enchants:add(3294, "item:39001", {"INVTYPE_CLOAK"})
 Moldy.Enchants:add(3296, "item:39004", {"INVTYPE_CLOAK"})
 -- Enchant Chest - Super Health
 Moldy.Enchants:add(3297, "item:39005", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
+-- Socket One-Handed Weapon
+Moldy.Enchants:add(3319, "spell:50465", {"INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Jormungar Leg Armor
 Moldy.Enchants:add(3325, "item:38371", {"INVTYPE_LEGS"})
 -- Nerubian Leg Armor

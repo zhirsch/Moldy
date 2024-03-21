@@ -4,6 +4,7 @@ import collections
 import csv
 import itertools
 import requests_cache
+import sys
 
 
 ITEM__CLASS_ID__CONSUMABLE = 0
@@ -12,8 +13,6 @@ ITEM__SUBCLASS_ID__ITEM_ENHANCEMENT = 6
 ITEM__SUBCLASS_ID__QUEST = 0
 
 ITEM_EFFECT__TRIGGER_TYPE__ON_USE = 0
-
-SPELL_EFFECT__EFFECT__ENCHANT_ITEM = 53
 
 ITEM_CLASS_WEAPON = 2
 ITEM_CLASS_ARMOR = 4
@@ -213,6 +212,7 @@ SPELL_BLACKLIST = {
     48557, # https://www.wowhead.com/wotlk/spell=48557/riding-crop
 
     # Testing
+    14847, # https://www.wowhead.com/wotlk/spell=14847/test-enchant-fire-weapon
     19927, # https://www.wowhead.com/wotlk/spell=19927/test-enchant-weapon-flame
     44119, # https://www.wowhead.com/wotlk/spell=44119/enchant-bracer-template
     47147, # https://www.wowhead.com/wotlk/spell=47147/test-on-use-enchant
@@ -221,7 +221,10 @@ SPELL_BLACKLIST = {
     48036, # https://www.wowhead.com/wotlk/spell=48036/enchant-chest-test
     50358, # https://www.wowhead.com/wotlk/spell=50358/test-skill-req-enchant
 }
+
 ITEM_BLACKLIST = {
+    41605, # https://www.wowhead.com/wotlk/item=41605/zzdeprecated-sanctified-spellthread
+    41606, # https://www.wowhead.com/wotlk/item=41606/zzdeprecated-masters-spellthread
     44125, # https://www.wowhead.com/wotlk/item=44125/zzzoldlesser-inscription-of-template-ph
     44126, # https://www.wowhead.com/wotlk/item=44126/zzzoldgreater-inscription-of-template-ph
 }
@@ -257,26 +260,49 @@ for row in get_db("SpellEquippedItems"):
         if (allowed_inv_types & (1 << inv_type_id)) != 0:
             SPELL_ID_TO_INV_TYPES[spell_id].add(inv_type)
 
-ENCHANT_ID_TO_SPELL_IDS = collections.defaultdict(set)
-for row in get_db("SpellEffect"):
-    effect = int(row["Effect"])
-    enchant_id = int(row["EffectMiscValue_0"])
-    spell_id = int(row["SpellID"])
 
-    if spell_id not in SPELL_IDS:
-        continue
-    if effect != SPELL_EFFECT__EFFECT__ENCHANT_ITEM:
-        continue
+def groupby(entries, keyfunc):
+    entries = sorted(entries, key=keyfunc)
+    return {k: list(v) for k, v in itertools.groupby(entries, key=keyfunc)}
 
-    # BUG! https://www.wowhead.com/wotlk/spell=27964/enchant-weapon-major-spirit
-    # is marked as applying the "Lifestealing" enchant.
-    if spell_id == 27964:
-        assert enchant_id == 1898
-        ENCHANT_ID_TO_SPELL_IDS[1183].add(spell_id)
-        ENCHANT_ID_TO_SPELL_IDS[2665].add(spell_id)
-        continue
+def dropnone(entries):
+    return [x for x in entries if x is not None]
 
-    ENCHANT_ID_TO_SPELL_IDS[enchant_id].add(spell_id)
+
+class SpellEffect:
+
+    EFFECT__ENCHANT_ITEM = 53
+
+    def __init__(self, row):
+        self.effect = int(row["Effect"])
+        self.enchant_id = int(row["EffectMiscValue_0"])
+        self.spell_id = int(row["SpellID"])
+
+    @classmethod
+    def from_row(cls, row):
+        spell_effect = cls(row)
+
+        # BUG! https://www.wowhead.com/wotlk/spell=27964/enchant-weapon-major-spirit
+        # is marked as applying the "Lifestealing" enchant.
+        if spell_effect.spell_id == 27964:
+            assert spell_effect.enchant_id == 1898
+            spell_effect.enchant_id = 1183 # or 2665?
+
+        return spell_effect
+
+    @staticmethod
+    def get_all():
+        return [
+            spell_effect for spell_effect
+            in [SpellEffect.from_row(row) for row in get_db("SpellEffect")]
+            if spell_effect.spell_id in SPELL_IDS
+            and spell_effect.effect == SpellEffect.EFFECT__ENCHANT_ITEM
+        ]
+
+
+def get_enchant_id_to_spell_id_map():
+    return groupby(SpellEffect.get_all(), lambda spell_effect: spell_effect.enchant_id)
+ENCHANT_ID_TO_SPELL_IDS = get_enchant_id_to_spell_id_map()
 
 
 SPELL_ID_TO_ITEM_IDS = collections.defaultdict(set)
@@ -293,17 +319,17 @@ for row in get_db("ItemEffect"):
         continue
     SPELL_ID_TO_ITEM_IDS[spell_id].add(item_id)
 
-enchants = set()
-for row in get_db("SpellItemEnchantment"):
-    enchant_id = int(row["ID"])
-    for spell_id in ENCHANT_ID_TO_SPELL_IDS[enchant_id]:
-        invtypes = set(inv_type for inv_type in SPELL_ID_TO_INV_TYPES[spell_id])
+
+def assert_no_duplicate_enchants(spell_effects):
+    enchants = set()
+    for spell_effect in spell_effects:
+        invtypes = set(inv_type for inv_type in SPELL_ID_TO_INV_TYPES[spell_effect.spell_id])
         if not invtypes:
-            raise ValueError(spell_id)
+            raise ValueError(spell_effect.spell_id)
         for invtype in invtypes:
-            enchant = (enchant_id, invtype)
+            enchant = (spell_effect.enchant_id, invtype)
             if enchant in enchants:
-                raise ValueError(spell_id)
+                raise ValueError(spell_effect.spell_id)
             enchants.add(enchant)
 
 ITEM_ID_TO_BUY_PRICE = {}
@@ -329,36 +355,44 @@ def get_item_for_spell(spell_id):
         (item_id,) = SPELL_ID_TO_ITEM_IDS[spell_id]
         return item_id
 
-    candidates = [x for x in candidates if ITEM_ID_TO_FACTION[x] != 0]
-    if not candidates:
-        return None
-    if len(candidates) == 1:
-        (item_id,) = candidates
-        return item_id
+    if any(x for x in candidates if ITEM_ID_TO_FACTION[x] != 0):
+        candidates = [x for x in candidates if ITEM_ID_TO_FACTION[x] != 0]
+        if len(candidates) == 1:
+            (item_id,) = candidates
+            return item_id
+        if len(candidates) == 2:
+            # Arbitrarily pick the Horde version of items.
+            faction_candidates = {ITEM_ID_TO_FACTION[x]: x for x in candidates}
+            if 946 in faction_candidates and 947 in faction_candidates:
+                return faction_candidates[947]
+            if 1037 in faction_candidates and 1052 in faction_candidates:
+                return faction_candidates[1052]
 
-    candidates = [x for x in candidates if ITEM_ID_TO_BUY_PRICE[x] == 0]
-    if not candidates:
-        return None
-    if len(candidates) == 1:
-        (item_id,) = candidates
-        return item_id
+    if any(x for x in candidates if ITEM_ID_TO_BUY_PRICE[x] == 0):
+        candidates = [x for x in candidates if ITEM_ID_TO_BUY_PRICE[x] == 0]
+        if len(candidates) == 1:
+            (item_id,) = candidates
+            return item_id
 
     raise ValueError(candidates)
 
 
-entries = []
-for row in sorted(get_db("SpellItemEnchantment"), key=lambda row: int(row["ID"])):
-    enchant_id = int(row["ID"])
-    for spell_id in ENCHANT_ID_TO_SPELL_IDS[enchant_id]:
-        if spell_id not in SPELL_IDS:
-            continue
-        item_id = get_item_for_spell(spell_id)
+def main(args):
+    spell_effects = SpellEffect.get_all()
+    assert_no_duplicate_enchants(spell_effects)
+
+    for spell_effect in sorted(spell_effects, key=lambda x: (x.enchant_id, x.spell_id)):
+        item_id = get_item_for_spell(spell_effect.spell_id)
         if item_id:
             link = "item:%d" % item_id
         else:
-            link = "spell:%d" % spell_id
-        types = set(inv_type for inv_type in SPELL_ID_TO_INV_TYPES[spell_id])
+            link = "spell:%d" % spell_effect.spell_id
+        types = set(inv_type for inv_type in SPELL_ID_TO_INV_TYPES[spell_effect.spell_id])
         if not types:
-            raise ValueError(spell_id)
-        print("-- {}".format(SPELL_NAMES[spell_id]))
-        print("Moldy.Enchants:add({}, \"{}\", {{\"{}\"}})".format(enchant_id, link, "\", \"".join(sorted(types))))
+            raise ValueError(spell_effect.spell_id)
+        print("-- {}".format(SPELL_NAMES[spell_effect.spell_id]))
+        print("Moldy.Enchants:add({}, \"{}\", {{\"{}\"}})".format(spell_effect.enchant_id, link, "\", \"".join(sorted(types))))
+
+
+if __name__ == '__main__':
+    sys.exit(main(sys.argv[1:]))
