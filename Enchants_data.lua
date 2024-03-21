@@ -815,8 +815,6 @@ Moldy.Enchants:add(3794, "item:44068", {"INVTYPE_SHOULDER"})
 -- Arcanum of Triumph
 Moldy.Enchants:add(3795, "item:44069", {"INVTYPE_HEAD"})
 -- Arcanum of Dominance
-Moldy.Enchants:add(3796, "spell:59778", {"INVTYPE_HEAD"})
--- Arcanum of Dominance
 Moldy.Enchants:add(3797, "item:44075", {"INVTYPE_HEAD"})
 -- Inscription of the Storm
 Moldy.Enchants:add(3806, "item:44129", {"INVTYPE_SHOULDER"})
