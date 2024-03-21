@@ -1,5 +1,3 @@
--- Sharpen Blade
-Moldy.Enchants:add(1, "spell:2605", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Armor +8
 Moldy.Enchants:add(15, "item:2304", {"INVTYPE_CHEST", "INVTYPE_FEET", "INVTYPE_HAND", "INVTYPE_LEGS", "INVTYPE_ROBE"})
 -- Armor +16
@@ -218,8 +216,6 @@ Moldy.Enchants:add(963, "item:38917", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "IN
 Moldy.Enchants:add(983, "item:38959", {"INVTYPE_CLOAK"})
 -- Enchant Boots - Superior Agility
 Moldy.Enchants:add(983, "item:38976", {"INVTYPE_FEET"})
--- Test Enchant Fire Weapon
-Moldy.Enchants:add(1023, "spell:14847", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Shield - Major Stamina
 Moldy.Enchants:add(1071, "item:38945", {"INVTYPE_SHIELD"})
 -- Enchant Boots - Greater Fortitude
@@ -615,7 +611,7 @@ Moldy.Enchants:add(2998, "item:29187", {"INVTYPE_SHOULDER"})
 -- Arcanum of the Defender
 Moldy.Enchants:add(2999, "item:29186", {"INVTYPE_HEAD"})
 -- Arcanum of Renewal
-Moldy.Enchants:add(3001, "spell:35445", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3001, "item:29190", {"INVTYPE_HEAD"})
 -- Arcanum of Power
 Moldy.Enchants:add(3002, "item:29191", {"INVTYPE_HEAD"})
 -- Arcanum of Ferocity
@@ -627,7 +623,7 @@ Moldy.Enchants:add(3005, "item:29194", {"INVTYPE_HEAD"})
 -- Arcanum of Arcane Warding
 Moldy.Enchants:add(3006, "item:29195", {"INVTYPE_HEAD"})
 -- Arcanum of Fire Warding
-Moldy.Enchants:add(3007, "spell:35456", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3007, "item:29197", {"INVTYPE_HEAD"})
 -- Arcanum of Frost Warding
 Moldy.Enchants:add(3008, "item:29198", {"INVTYPE_HEAD"})
 -- Arcanum of Shadow Warding
@@ -654,8 +650,6 @@ Moldy.Enchants:add(3222, "item:38947", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "I
 Moldy.Enchants:add(3223, "item:33185", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Executioner
 Moldy.Enchants:add(3225, "item:38948", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
--- Enchant Bracer - Template
-Moldy.Enchants:add(3228, "spell:44119", {"INVTYPE_WRIST"})
 -- Enchant Shield - Resilience
 Moldy.Enchants:add(3229, "item:38949", {"INVTYPE_SHIELD"})
 -- Enchant Cloak - Superior Frost Resistance
@@ -712,8 +706,6 @@ Moldy.Enchants:add(3294, "item:39001", {"INVTYPE_CLOAK"})
 Moldy.Enchants:add(3296, "item:39004", {"INVTYPE_CLOAK"})
 -- Enchant Chest - Super Health
 Moldy.Enchants:add(3297, "item:39005", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
--- Socket One-Handed Weapon
-Moldy.Enchants:add(3319, "spell:50465", {"INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Jormungar Leg Armor
 Moldy.Enchants:add(3325, "item:38371", {"INVTYPE_LEGS"})
 -- Nerubian Leg Armor
@@ -765,11 +757,11 @@ Moldy.Enchants:add(3608, "item:41167", {"INVTYPE_RANGED"})
 -- Shining Spellthread
 Moldy.Enchants:add(3718, "item:41601", {"INVTYPE_LEGS"})
 -- Brilliant Spellthread
-Moldy.Enchants:add(3719, "spell:55631", {"INVTYPE_LEGS"})
+Moldy.Enchants:add(3719, "item:41602", {"INVTYPE_LEGS"})
 -- Azure Spellthread
 Moldy.Enchants:add(3720, "item:41603", {"INVTYPE_LEGS"})
 -- Sapphire Spellthread
-Moldy.Enchants:add(3721, "spell:55634", {"INVTYPE_LEGS"})
+Moldy.Enchants:add(3721, "item:41604", {"INVTYPE_LEGS"})
 -- Lightweave Embroidery
 Moldy.Enchants:add(3722, "spell:55642", {"INVTYPE_CLOAK"})
 -- Darkglow Embroidery
@@ -829,31 +821,31 @@ Moldy.Enchants:add(3806, "item:44129", {"INVTYPE_SHOULDER"})
 -- Inscription of the Crag
 Moldy.Enchants:add(3807, "item:44130", {"INVTYPE_SHOULDER"})
 -- Greater Inscription of the Axe
-Moldy.Enchants:add(3808, "spell:59934", {"INVTYPE_SHOULDER"})
+Moldy.Enchants:add(3808, "item:50335", {"INVTYPE_SHOULDER"})
 -- Greater Inscription of the Crag
-Moldy.Enchants:add(3809, "spell:59936", {"INVTYPE_SHOULDER"})
+Moldy.Enchants:add(3809, "item:50336", {"INVTYPE_SHOULDER"})
 -- Greater Inscription of the Storm
-Moldy.Enchants:add(3810, "spell:59937", {"INVTYPE_SHOULDER"})
+Moldy.Enchants:add(3810, "item:50338", {"INVTYPE_SHOULDER"})
 -- Greater Inscription of the Pinnacle
-Moldy.Enchants:add(3811, "spell:59941", {"INVTYPE_SHOULDER"})
+Moldy.Enchants:add(3811, "item:50337", {"INVTYPE_SHOULDER"})
 -- Arcanum of the Frosty Soul
-Moldy.Enchants:add(3812, "spell:59944", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3812, "item:44137", {"INVTYPE_HEAD"})
 -- Arcanum of Toxic Warding
-Moldy.Enchants:add(3813, "spell:59945", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3813, "item:44138", {"INVTYPE_HEAD"})
 -- Arcanum of the Fleeing Shadow
-Moldy.Enchants:add(3814, "spell:59946", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3814, "item:44139", {"INVTYPE_HEAD"})
 -- Arcanum of the Eclipsed Moon
-Moldy.Enchants:add(3815, "spell:59947", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3815, "item:44140", {"INVTYPE_HEAD"})
 -- Arcanum of the Flame's Soul
-Moldy.Enchants:add(3816, "spell:59948", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3816, "item:44141", {"INVTYPE_HEAD"})
 -- Arcanum of Torment
-Moldy.Enchants:add(3817, "spell:59954", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3817, "item:50367", {"INVTYPE_HEAD"})
 -- Arcanum of the Stalwart Protector
-Moldy.Enchants:add(3818, "spell:59955", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3818, "item:50369", {"INVTYPE_HEAD"})
 -- Arcanum of Blissful Mending
-Moldy.Enchants:add(3819, "spell:59960", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3819, "item:50370", {"INVTYPE_HEAD"})
 -- Arcanum of Burning Mysteries
-Moldy.Enchants:add(3820, "spell:59970", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3820, "item:50368", {"INVTYPE_HEAD"})
 -- Frosthide Leg Armor
 Moldy.Enchants:add(3822, "item:38373", {"INVTYPE_LEGS"})
 -- Icescale Leg Armor
@@ -893,7 +885,7 @@ Moldy.Enchants:add(3839, "spell:44645", {"INVTYPE_FINGER"})
 -- Enchant Ring - Greater Spellpower
 Moldy.Enchants:add(3840, "spell:44636", {"INVTYPE_FINGER"})
 -- Arcanum of the Savage Gladiator
-Moldy.Enchants:add(3842, "spell:61271", {"INVTYPE_HEAD"})
+Moldy.Enchants:add(3842, "item:50373", {"INVTYPE_HEAD"})
 -- Diamond-cut Refractor Scope
 Moldy.Enchants:add(3843, "item:44739", {"INVTYPE_RANGED"})
 -- Enchant Weapon - Exceptional Spirit
