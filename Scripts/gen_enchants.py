@@ -2,6 +2,8 @@
 
 import collections
 import csv
+import requests_cache
+
 
 ITEM__CLASS_ID__CONSUMABLE = 0
 ITEM__CLASS_ID__QUEST = 12
@@ -34,7 +36,6 @@ WEAPON_SUBCLASSES = {
     20: "Fishingpole",
 }
 
-# Manually mapped.
 WEAPON_SUBCLASS_TO_INVENTORY_TYPES = {
     "Axe1H": ["INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"],
     "Axe2H": ["INVTYPE_2HWEAPON"],
@@ -69,7 +70,6 @@ ARMOR_SUBCLASSES = {
     11: "Relic",
 }
 
-# Manually mapped.
 ARMOR_SUBCLASS_TO_INVENTORY_TYPES = {
     "Generic": [],
     "Cloth": [],
@@ -118,6 +118,15 @@ INVENTORY_TYPES = {
     28: "INVTYPE_RELIC",
 }
 
+BUILD = "3.4.3.53788"
+URL_PATTERN = "https://wago.tools/db2/%s/csv?build=%s"
+SESSION = requests_cache.CachedSession("wago.tools")
+
+def downloaddb(name, build=BUILD):
+    url = URL_PATTERN % (name, build)
+    with SESSION.get(url) as fd:
+        return csv.DictReader(fd.text.splitlines())
+
 SPELL_BLACKLIST = {
     47101, # https://www.wowhead.com/wotlk/spell=47101/test-riding-crop-enchant
     47103, # https://www.wowhead.com/wotlk/spell=47103/riding-crop
@@ -129,117 +138,88 @@ SPELL_BLACKLIST = {
     48557, # https://www.wowhead.com/wotlk/spell=48557/riding-crop
     50358, # https://www.wowhead.com/wotlk/spell=50358/test-skill-req-enchant
 }
-
-SPELL_IDS = set()
-with open("Spell.csv", newline='') as csvfile:
-    for row in csv.DictReader(csvfile):
-        spell_id = int(row["ID"])
-        name_subtext = row["NameSubtext_lang"]
-
-        if name_subtext == "QASpell":
-            continue
-        if spell_id in SPELL_BLACKLIST:
-            continue
-        SPELL_IDS.add(spell_id)
-
 ITEM_BLACKLIST = {
-    41605, # https://www.wowhead.com/wotlk/item=41605/zzdeprecated-sanctified-spellthread
-    41606, # https://www.wowhead.com/wotlk/item=41606/zzdeprecated-masters-spellthread
+    # 41605, # https://www.wowhead.com/wotlk/item=41605/zzdeprecated-sanctified-spellthread
+    # 41606, # https://www.wowhead.com/wotlk/item=41606/zzdeprecated-masters-spellthread
 }
 
-ALLOWED_ITEM_CLASS_SUBCLASS_PAIRS = {
-    (ITEM__CLASS_ID__CONSUMABLE, ITEM__SUBCLASS_ID__ITEM_ENHANCEMENT),
-    (ITEM__CLASS_ID__QUEST, ITEM__SUBCLASS_ID__QUEST),
-}
-
-ITEM_IDS = set()
-with open("Item.csv", newline='') as csvfile:
-    for row in csv.DictReader(csvfile):
-        item_id = int(row["ID"])
-        class_id = int(row["ClassID"])
-        subclass_id = int(row["SubclassID"])
-
-        if item_id in ITEM_BLACKLIST:
-            continue
-        if (class_id, subclass_id) not in ALLOWED_ITEM_CLASS_SUBCLASS_PAIRS:
-            continue
-        ITEM_IDS.add(item_id)
+SPELL_IDS = set(int(row["ID"]) for row in downloaddb("Spell") if int(row["ID"]) not in SPELL_BLACKLIST)
+ITEM_IDS = set(int(row["ID"]) for row in downloaddb("Item") if int(row["ID"]) not in ITEM_BLACKLIST)
 
 SPELL_ID_TO_INV_TYPES = collections.defaultdict(set)
-with open("SpellEquippedItems.csv", newline='') as csvfile:
-    for row in csv.DictReader(csvfile):
-        spell_id = int(row["SpellID"])
-        allowed_item_class = int(row["EquippedItemClass"])
-        allowed_inv_types = int(row["EquippedItemInvTypes"])
-        allowed_subclasses = int(row["EquippedItemSubclass"])
+for row in downloaddb("SpellEquippedItems"):
+    spell_id = int(row["SpellID"])
+    allowed_item_class = int(row["EquippedItemClass"])
+    allowed_inv_types = int(row["EquippedItemInvTypes"])
+    allowed_subclasses = int(row["EquippedItemSubclass"])
 
-        if spell_id not in SPELL_IDS:
+    if spell_id not in SPELL_IDS:
+        continue
+
+    subclasses, subclass_to_inventory_types = None, None
+    if allowed_item_class == ITEM_CLASS_WEAPON:
+        subclasses = WEAPON_SUBCLASSES
+        subclass_to_inventory_types = WEAPON_SUBCLASS_TO_INVENTORY_TYPES
+    if allowed_item_class == ITEM_CLASS_ARMOR:
+        subclasses = ARMOR_SUBCLASSES
+        subclass_to_inventory_types = ARMOR_SUBCLASS_TO_INVENTORY_TYPES
+
+    if not subclasses:
+        continue
+
+    if allowed_subclasses == 0:
+        for inv_type_id, inv_type in INVENTORY_TYPES.items():
+            if (allowed_inv_types & (1 << inv_type_id)) != 0:
+                SPELL_ID_TO_INV_TYPES[spell_id].add(inv_type)
+
+    for subclass_id, subclass in subclasses.items():
+        if (allowed_subclasses & (1 << subclass_id)) == 0:
             continue
+        for inv_type in subclass_to_inventory_types[subclass]:
+            SPELL_ID_TO_INV_TYPES[spell_id].add(inv_type)
 
-        subclasses, subclass_to_inventory_types = None, None
-        if allowed_item_class == ITEM_CLASS_WEAPON:
-            subclasses = WEAPON_SUBCLASSES
-            subclass_to_inventory_types = WEAPON_SUBCLASS_TO_INVENTORY_TYPES
-        if allowed_item_class == ITEM_CLASS_ARMOR:
-            subclasses = ARMOR_SUBCLASSES
-            subclass_to_inventory_types = ARMOR_SUBCLASS_TO_INVENTORY_TYPES
-
-        if not subclasses:
-            continue
-
-        for subclass_id, subclass in subclasses.items():
-            if allowed_subclasses == 0:
-                for inv_type_id, inv_type in INVENTORY_TYPES.items():
-                    if (allowed_inv_types & (1 << inv_type_id)) != 0:
-                        SPELL_ID_TO_INV_TYPES[spell_id].add(inv_type)
-            if (allowed_subclasses & (1 << subclass_id)) != 0:
-                for inv_type in subclass_to_inventory_types[subclass]:
-                    SPELL_ID_TO_INV_TYPES[spell_id].add(inv_type)
-                for inv_type_id, inv_type in INVENTORY_TYPES.items():
-                    if (allowed_inv_types & (1 << inv_type_id)) != 0:
-                        SPELL_ID_TO_INV_TYPES[spell_id].add(inv_type)
+    for inv_type_id, inv_type in INVENTORY_TYPES.items():
+        if (allowed_inv_types & (1 << inv_type_id)) != 0:
+            SPELL_ID_TO_INV_TYPES[spell_id].add(inv_type)
 
 ENCHANT_ID_TO_SPELL_IDS = collections.defaultdict(set)
-with open("SpellEffect.csv", newline='') as csvfile:
-    for row in csv.DictReader(csvfile):
-        effect = int(row["Effect"])
-        enchant_id = int(row["EffectMiscValue_0"])
-        spell_id = int(row["SpellID"])
+for row in downloaddb("SpellEffect"):
+    effect = int(row["Effect"])
+    enchant_id = int(row["EffectMiscValue_0"])
+    spell_id = int(row["SpellID"])
 
-        if spell_id not in SPELL_IDS:
-            continue
-        if effect != SPELL_EFFECT__EFFECT__ENCHANT_ITEM:
-            continue
-        ENCHANT_ID_TO_SPELL_IDS[enchant_id].add(spell_id)
+    if spell_id not in SPELL_IDS:
+        continue
+    if effect != SPELL_EFFECT__EFFECT__ENCHANT_ITEM:
+        continue
+    ENCHANT_ID_TO_SPELL_IDS[enchant_id].add(spell_id)
 
 
 SPELL_ID_TO_ITEM_IDS = collections.defaultdict(set)
-with open("ItemEffect.csv", newline='') as csvfile:
-    for row in csv.DictReader(csvfile):
-        spell_id = int(row["SpellID"])
-        item_id = int(row["ParentItemID"])
-        trigger_type = int(row["TriggerType"])
+for row in downloaddb("ItemEffect"):
+    spell_id = int(row["SpellID"])
+    item_id = int(row["ParentItemID"])
+    trigger_type = int(row["TriggerType"])
 
-        if spell_id not in SPELL_IDS:
-            continue
-        if item_id not in ITEM_IDS:
-            continue
-        if trigger_type != ITEM_EFFECT__TRIGGER_TYPE__ON_USE:
-            continue
-        SPELL_ID_TO_ITEM_IDS[spell_id].add(item_id)
+    if spell_id not in SPELL_IDS:
+        continue
+    if item_id not in ITEM_IDS:
+        continue
+    if trigger_type != ITEM_EFFECT__TRIGGER_TYPE__ON_USE:
+        continue
+    SPELL_ID_TO_ITEM_IDS[spell_id].add(item_id)
 
 entries = []
-with open("SpellItemEnchantment.csv", newline='') as csvfile:
-    for row in sorted(csv.DictReader(csvfile), key=lambda row: int(row["ID"])):
-        enchant_id = int(row["ID"])
-        for spell_id in ENCHANT_ID_TO_SPELL_IDS[enchant_id]:
-            if spell_id not in SPELL_IDS:
-                continue
-            link = "spell:%d" % spell_id
-            if spell_id in SPELL_ID_TO_ITEM_IDS:
-                item_id = next(iter(SPELL_ID_TO_ITEM_IDS[spell_id]))
-                link = "item:%d" % item_id
-            types = set(inv_type for inv_type in SPELL_ID_TO_INV_TYPES[spell_id])
-            if not types:
-                raise ValueError(spell_id)
-            print("Moldy.Enchants:add(%d, \"%s\", {\"%s\"})" % (enchant_id, link, "\", \"".join(sorted(types))))
+for row in sorted(downloaddb("SpellItemEnchantment"), key=lambda row: int(row["ID"])):
+    enchant_id = int(row["ID"])
+    for spell_id in ENCHANT_ID_TO_SPELL_IDS[enchant_id]:
+        if spell_id not in SPELL_IDS:
+            continue
+        link = "spell:%d" % spell_id
+        if spell_id in SPELL_ID_TO_ITEM_IDS:
+            item_id = next(iter(SPELL_ID_TO_ITEM_IDS[spell_id]))
+            link = "item:%d" % item_id
+        types = set(inv_type for inv_type in SPELL_ID_TO_INV_TYPES[spell_id])
+        if not types:
+            raise ValueError(spell_id)
+        print("Moldy.Enchants:add(%d, \"%s\", {\"%s\"})" % (enchant_id, link, "\", \"".join(sorted(types))))
