@@ -23,4 +23,4 @@ Enchants_data-classic.lua
 
 #@non-version-classic@
 Enchants_data.lua
-#@end-non-version-classic
+#@end-non-version-classic@
