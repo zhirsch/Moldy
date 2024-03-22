@@ -7,10 +7,11 @@ Enchants = {
     end,
 }
 Enchants.prototype = {
-    add = function(self, enchantId, link, invtypes)
+    add = function(self, enchantId, spellLink, itemLink, invtypes)
         local enchants = GetOrCreateTableEntry(self.map, enchantId, {})
         table.insert(enchants, {
-            link = link,
+            spellLink = spellLink,
+            itemLink = itemLink,
             invtypes = invtypes,
         })
     end,
@@ -31,7 +32,10 @@ Enchants.prototype = {
             end
             return "enchant:" .. enchantId
         end
-        return enchant.link
+        if enchant.itemLink and GetItemInfoInstant(enchant.itemLink) then
+            return enchant.itemLink
+        end
+        return enchant.spellLink
     end,
 }
 
