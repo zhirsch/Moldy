@@ -1,10 +1,11 @@
 #!/usr/bin/python3
 
-import collections
-import csv
+import io
 import itertools
+import math
+import pandas as pd
+import pandasql
 import requests_cache
-import sys
 
 ITEM_CLASS_WEAPON = 2
 ITEM_CLASS_ARMOR = 4
@@ -122,42 +123,31 @@ INVENTORY_TYPES = {
     28: "INVTYPE_RELIC",
 }
 
-BUILD = "3.4.3.53788"
-URL_PATTERN = "https://wago.tools/db2/%s/csv?build=%s"
-SESSION = requests_cache.CachedSession("db-wago.tools")
-
-def get_db(name, build=BUILD):
-    url = URL_PATTERN % (name, build)
-    with SESSION.get(url) as fd:
-        return csv.DictReader(fd.text.splitlines())
 
 SPELL_BLACKLIST = {
-    # Can't tell the difference between
-    # https://www.wowhead.com/wotlk/spell=7745/enchant-2h-weapon-minor-impact
+    # Temporary
+    2605, # https://www.wowhead.com/wotlk/spell=2605/sharpen-blade
+
+    # Can't tell the difference between:
     # https://www.wowhead.com/wotlk/spell=13503/enchant-weapon-lesser-striking
-     7745,
+    7745, # https://www.wowhead.com/wotlk/spell=7745/enchant-2h-weapon-minor-impact
 
-    # Can't tell the difference between
-    # https://www.wowhead.com/wotlk/spell=13529/enchant-2h-weapon-lesser-impact
+    # Can't tell the difference between:
     # https://www.wowhead.com/wotlk/spell=13693/enchant-weapon-striking
-    13529,
+    13529, # https://www.wowhead.com/wotlk/spell=13529/enchant-2h-weapon-lesser-impact
 
-    # Can't tell the difference between
-    # https://www.wowhead.com/wotlk/spell=13937/enchant-2h-weapon-greater-impact
+    # Can't tell the difference between:
     # https://www.wowhead.com/wotlk/spell=27967/enchant-weapon-major-striking
-    13937,
+    13937, # https://www.wowhead.com/wotlk/spell=13937/enchant-2h-weapon-greater-impact
 
-    # Can't tell the difference between
-    # https://www.wowhead.com/wotlk/spell=13695/enchant-2h-weapon-impact
+    # Can't tell the difference between:
     # https://www.wowhead.com/wotlk/spell=20031/enchant-weapon-superior-striking
-    13695,
+    13695, # https://www.wowhead.com/wotlk/spell=13695/enchant-2h-weapon-impact
 
-    # Can't tell the difference between
-    # https://www.wowhead.com/wotlk/spell=23802/enchant-bracer-healing-power
-    # https://www.wowhead.com/wotlk/spell=27911/enchant-bracer-superior-healing
+    # Can't tell the difference between:
     # https://www.wowhead.com/wotlk/spell=27917/enchant-bracer-spellpower
-    23802,
-    27911,
+    23802, # https://www.wowhead.com/wotlk/spell=23802/enchant-bracer-healing-power
+    27911, # https://www.wowhead.com/wotlk/spell=27911/enchant-bracer-superior-healing
 
     # Unused?  Seems like this is the actual enchant:
     # https://www.wowhead.com/wotlk/spell=30260/stabilitzed-eternium-scope
@@ -209,15 +199,31 @@ ITEM_BLACKLIST = {
     44126, # https://www.wowhead.com/wotlk/item=44126/zzzoldgreater-inscription-of-template-ph
 }
 
-SPELL_NAMES = {int(row["ID"]): row["Name_lang"] for row in get_db("SpellName")}
+
+BUILD = "3.4.3.53788"
+URL_PATTERN = "https://wago.tools/db2/{}/csv?build={}"
+SESSION = requests_cache.CachedSession("db-wago.tools")
+
+
+def load_db(name, build=BUILD, **kwargs):
+    with SESSION.get(URL_PATTERN.format(name, build)) as fd:
+        return pd.read_csv(io.StringIO(fd.text), **kwargs)
+
+TABLES = [
+    "ItemEffect",
+    "ItemSparse",
+    "SpellEffect",
+    "SpellEquippedItems",
+    "SpellName",
+]
+DATA_FRAMES = {table: load_db(table) for table in TABLES}
+
+sqldf = lambda q: pandasql.sqldf(q, DATA_FRAMES)
 
 # Add any spells that start with "QAEnchant " to the blacklist
-for spell_id, spell_name in SPELL_NAMES.items():
-    if spell_name.startswith("QAEnchant "):
-        SPELL_BLACKLIST.add(spell_id)
+for row in sqldf("SELECT ID FROM SpellName WHERE Name_lang LIKE \"QAEnchant %\"").itertuples():
+    SPELL_BLACKLIST.add(row.ID)
 
-ITEM_ID_TO_FACTION = {int(row["ID"]): int(row["MinFactionID"]) for row in get_db("ItemSparse")}
-ITEM_ID_TO_BUY_PRICE = {int(row["ID"]): int(row["BuyPrice"]) for row in get_db("ItemSparse")}
 
 def flatten(matrix):
     return set(itertools.chain.from_iterable(matrix))
@@ -244,167 +250,124 @@ def get_inventory_types(allowed_item_class, allowed_item_subclass_mask, allowed_
     if allowed_item_class == ITEM_CLASS_ARMOR:
         output.update(get_armor_inventory_types_from_subclass_mask(allowed_item_subclass_mask))
 
-    return output
+    return frozenset(output)
 
 
-class SpellEffect:
+class Enchant:
 
-    EFFECT__ENCHANT_ITEM = 53
-
-    def __init__(self, enchant_id, spell_id, effect):
+    def __init__(self, enchant_id, spell_id, spell_name, inventory_types):
         self.enchant_id = enchant_id
         self.spell_id = spell_id
-        self.effect = effect
+        self.spell_name = spell_name
+        self.inventory_types = inventory_types
+        self.items = []
 
-    def __lt__(self, other):
-        return (self.enchant_id, self.spell_id) < (other.enchant_id, other.spell_id)
-
-    def get_link(self):
+    def get_spell_link(self):
         return "spell:%d" % self.spell_id
 
-    @classmethod
-    def from_row(cls, row):
-        spell_effect = cls(int(row["EffectMiscValue_0"]), int(row["SpellID"]), int(row["Effect"]))
+    def get_item_link(self):
+        if not self.items:
+            return None
 
-        # BUG! https://www.wowhead.com/wotlk/spell=27964/enchant-weapon-major-spirit
-        # is marked as applying the "Lifestealing" enchant.
-        if spell_effect.spell_id == 27964:
-            assert spell_effect.enchant_id == 1898
-            spell_effect.enchant_id = 1183 # or 2665?
+        if len(self.items) == 1:
+            (item,) = self.items
+            return "item:%d" % item.item_id
 
-        return spell_effect
+        factions = {item.faction_id: item for item in self.items if item.faction_id != 0}
+        if len(factions) == 1:
+            (item,) = factions.values()
+            return "item:%d" % item.item_id
+        if len(factions) == 2:
+            # Arbitrarily pick the Horde version of items.
+            if 946 in factions and 947 in factions:
+                return "item:%d" % factions[947].item_id
+            if 1037 in factions and 1052 in factions:
+                return "item:%d" % factions[1052].item_id
 
-    @staticmethod
-    def get_all():
-        return [
-            spell_effect for spell_effect
-            in (SpellEffect.from_row(row) for row in get_db("SpellEffect"))
-            if spell_effect.spell_id not in SPELL_BLACKLIST
-            and spell_effect.effect == SpellEffect.EFFECT__ENCHANT_ITEM
-        ]
+        buy_prices = {item.item_id: item.buy_price for item in self.items if item.buy_price == 0}
+        if len(buy_prices) == 1:
+            (item_id,) = buy_prices.keys()
+            return "item:%d" % item_id
 
-
-class SpellInventoryTypes:
-
-    def __init__(self, spell_id, inventory_types):
-        self.spell_id = spell_id
-        self.inventory_types = inventory_types
-
-    @classmethod
-    def from_row(cls, row):
-        spell_id = int(row["SpellID"])
-        allowed_item_class = int(row["EquippedItemClass"])
-        allowed_item_subclass_mask = int(row["EquippedItemSubclass"])
-        allowed_item_inventory_type_mask = int(row["EquippedItemInvTypes"])
-
-        inventory_types = get_inventory_types(allowed_item_class, allowed_item_subclass_mask, allowed_item_inventory_type_mask)
-        return cls(spell_id, inventory_types)
-
-    @staticmethod
-    def get_all():
-        return {
-            spell_inventory_types.spell_id: spell_inventory_types for spell_inventory_types
-            in (SpellInventoryTypes.from_row(row) for row in get_db("SpellEquippedItems"))
-        }
+        raise ValueError("%d: %s" % (self.spell_id, self.items))
 
 
-class SpellItems:
+class Item:
 
-    TRIGGER_TYPE__ON_USE = 0
+    def __init__(self, item_id, faction_id, buy_price):
+        self.item_id = item_id
+        self.faction_id = faction_id
+        self.buy_price = buy_price
 
-    def __init__(self, spell_id, item_ids):
-        self.spell_id = spell_id
-        self.item_ids = item_ids
-
-    def get_link(self):
-        if not self.item_ids:
-            return "spell:%d" % self.spell_id
-        return "item:%d" % self._get_best_item_id()
-
-    def _get_best_item_id(self):
-        if len(self.item_ids) == 1:
-            (item_id,) = self.item_ids
-            return item_id
-
-        factions = {
-            ITEM_ID_TO_FACTION[item_id]: item_id for item_id in self.item_ids
-            if ITEM_ID_TO_FACTION.get(item_id, 0) != 0
-        }
-        if factions:
-            if len(factions) == 1:
-                (item_id,) = factions.values()
-                return item_id
-            if len(factions) == 2:
-                # Arbitrarily pick the Horde version of items.
-                if 946 in factions and 947 in factions:
-                    return factions[947]
-                if 1037 in factions and 1052 in factions:
-                    return factions[1052]
-
-        prices = {
-            item_id: ITEM_ID_TO_BUY_PRICE.get(item_id, 0) for item_id in self.item_ids
-            if ITEM_ID_TO_BUY_PRICE.get(item_id, 0) == 0
-        }
-        if prices:
-            if len(prices) == 1:
-                (item_id,) = prices.keys()
-                return item_id
-
-        raise ValueError("%d: %s" % (self.spell_id, self.item_ids))
-
-    @classmethod
-    def from_row(cls, row):
-        return cls(int(row["SpellID"]), int(row["ParentItemID"]), int(row["TriggerType"]))
-
-    @staticmethod
-    def get_all():
-        mapping = collections.defaultdict(set)
-        for row in get_db("ItemEffect"):
-            spell_id = int(row["SpellID"])
-            item_id = int(row["ParentItemID"])
-            trigger_type = int(row["TriggerType"])
-
-            if item_id in ITEM_BLACKLIST:
-                continue
-            if trigger_type != SpellItems.TRIGGER_TYPE__ON_USE:
-                continue
-
-            mapping[spell_id].add(item_id)
-
-        return {spell_id: SpellItems(spell_id, item_ids) for spell_id, item_ids in mapping.items()}
+    def __repr__(self):
+        return "Item{id=%s}" % self.item_id
 
 
-def assert_no_duplicate_enchants(spell_effects, spell_inventory_types):
-    enchants = set()
-    for spell_effect in spell_effects:
-        invtypes = spell_inventory_types[spell_effect.spell_id].inventory_types
-        if not invtypes:
-            raise ValueError(spell_effect.spell_id)
-        for invtype in invtypes:
-            enchant = (spell_effect.enchant_id, invtype)
-            if enchant in enchants:
-                raise ValueError(spell_effect.spell_id)
-            enchants.add(enchant)
+sql = """\
+SELECT
+  SpellEffect.EffectMiscValue_0 AS EnchantID,
+  SpellEffect.SpellID,
+  SpellName.Name_lang AS SpellName,
+  SpellEquippedItems.EquippedItemClass,
+  SpellEquippedItems.EquippedItemSubclass,
+  SpellEquippedItems.EquippedItemInvTypes,
+  ItemEffect.ParentItemID AS ItemID,
+  COALESCE(ItemSparse.MinFactionID, 0) AS FactionID,
+  ItemSparse.BuyPrice
+FROM
+  SpellEffect
+INNER JOIN
+  SpellName
+ON
+  SpellName.ID = SpellEffect.SpellID
+INNER JOIN
+  SpellEquippedItems
+ON
+  SpellEquippedItems.SpellID = SpellEffect.SpellID
+LEFT JOIN
+  ItemEffect
+ON
+  ItemEffect.SpellID = SpellEffect.SpellID
+  AND ItemEffect.TriggerType = 0
+LEFT JOIN
+  ItemSparse
+ON
+  ItemSparse.ID = ItemEffect.ParentItemID
+WHERE
+  SpellEffect.Effect == 53
+"""
+df = sqldf(sql)
 
+enchants = {}
+for row in df.itertuples():
+    enchant_id = row.EnchantID
+    if enchant_id == 1898 and row.SpellID == 27964:
+        # https://www.wowhead.com/wotlk/spell=27964/enchant-weapon-major-spirit
+        # is wrongly marked as enchanting Lifestealing.
+        enchant_id = 1183
 
-def get_link(spell_effect, spell_item):
-    if not spell_item:
-        return spell_effect.get_link()
-    return spell_item.get_link()
+    spell_id = row.SpellID
+    item_id = None if math.isnan(row.ItemID) else int(row.ItemID)
 
+    if spell_id in SPELL_BLACKLIST:
+        continue
+    if item_id in ITEM_BLACKLIST:
+        continue
 
-def main(args):
-    spell_effects = SpellEffect.get_all()
-    spell_inventory_types = SpellInventoryTypes.get_all()
-    spell_items = SpellItems.get_all()
-    assert_no_duplicate_enchants(spell_effects, spell_inventory_types)
+    spell_name = row.SpellName
+    faction_id = int(row.FactionID)
+    buy_price = None if math.isnan(row.BuyPrice) else int(row.BuyPrice)
+    inventory_types = get_inventory_types(row.EquippedItemClass, row.EquippedItemSubclass, row.EquippedItemInvTypes)
 
-    for spell_effect in sorted(spell_effects):
-        link = get_link(spell_effect, spell_items.get(spell_effect.spell_id))
-        types = spell_inventory_types[spell_effect.spell_id].inventory_types
-        print("-- {}".format(SPELL_NAMES[spell_effect.spell_id]))
-        print("Moldy.Enchants:add({}, \"{}\", {{\"{}\"}})".format(spell_effect.enchant_id, link, "\", \"".join(sorted(types))))
+    key = (enchant_id, spell_id, inventory_types)
+    if key not in enchants:
+        enchants[key] = Enchant(enchant_id, spell_id, spell_name, inventory_types)
+    if item_id:
+        enchants[key].items.append(Item(item_id, faction_id, buy_price))
 
-
-if __name__ == '__main__':
-    sys.exit(main(sys.argv[1:]))
+for _, enchant in sorted(enchants.items()):
+    print("-- " + enchant.spell_name)
+    item_link = enchant.get_item_link()
+    item_link_str = "\"%s\"" % item_link if item_link else "nil"
+    inventory_types_str = "{\"%s\"}" % "\", \"".join(sorted(enchant.inventory_types))
+    print("Moldy.Enchants:add(%d, \"%s\", %s, %s)" % (enchant.enchant_id, enchant.get_spell_link(), item_link_str, inventory_types_str))
