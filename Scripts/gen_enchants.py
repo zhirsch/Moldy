@@ -6,6 +6,7 @@ import math
 import pandas as pd
 import pandasql
 import requests_cache
+import sys
 
 ITEM_CLASS_WEAPON = 2
 ITEM_CLASS_ARMOR = 4
@@ -200,7 +201,7 @@ ITEM_BLACKLIST = {
 }
 
 
-BUILD = "3.4.3.53788"
+BUILD = sys.argv[1] if len(sys.argv) > 1 else "3.4.3.53788"
 URL_PATTERN = "https://wago.tools/db2/{}/csv?build={}"
 SESSION = requests_cache.CachedSession("db-wago.tools")
 
