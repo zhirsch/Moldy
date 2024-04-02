@@ -9,7 +9,12 @@ end
 
 local function AuraHook(tooltip, unit, index, filter)
 	local _, _, _, _, _, _, caster, _, _, spellId = UnitAura(unit, index, filter)
-	AddDoubleLine(tooltip, "Cast by:", caster and UnitName(caster))
+	if caster then
+		local class = UnitClassBase(caster)
+		local _, _, _, colorHex = GetClassColor(class)
+		local color = CreateColorFromHexString(colorHex)
+		AddDoubleLine(tooltip, "Cast by:", color:WrapTextInColorCode(UnitName(caster)))
+	end
 	AddDoubleLine(tooltip, "Spell ID:", spellId)
 end
 
