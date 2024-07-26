@@ -1,5 +1,5 @@
-## Interface: 30400
 ## Interface-Classic: 11501
+## Interface-Cata: 40400
 ## Title: Moldy
 
 embeds.xml
