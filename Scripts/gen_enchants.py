@@ -187,21 +187,30 @@ SPELL_BLACKLIST = {
     47715, # https://www.wowhead.com/wotlk/spell=47715/enchant-template
     48036, # https://www.wowhead.com/wotlk/spell=48036/enchant-chest-test
     50358, # https://www.wowhead.com/wotlk/spell=50358/test-skill-req-enchant
+    68274, # https://www.wowhead.com/cata/spell=68274/owen-test-recipe
 }
 
 ITEM_BLACKLIST = {
     # Don't exist.
     28876, 28877, 28879, 28880, 28883, 28884, 28890, 28891, 28892, 28893, 28894,
-    28895, 28896, 28897, 28898, 28899, 28900, 28901, 28902, 34110,
+    28895, 28896, 28897, 28898, 28899, 28900, 28901, 28902, 34110, 35438, 72070,
 
     41605, # https://www.wowhead.com/wotlk/item=41605/zzdeprecated-sanctified-spellthread
     41606, # https://www.wowhead.com/wotlk/item=41606/zzdeprecated-masters-spellthread
     44125, # https://www.wowhead.com/wotlk/item=44125/zzzoldlesser-inscription-of-template-ph
     44126, # https://www.wowhead.com/wotlk/item=44126/zzzoldgreater-inscription-of-template-ph
+
+    62422, # https://www.wowhead.com/cata/item=62422/arcanum-of-the-wildhammer
+    68720, # https://www.wowhead.com/cata/item=68720/arcanum-of-the-dragonmaw
+    68722, # https://www.wowhead.com/cata/item=68722/arcanum-of-the-wildhammer
+    68763, # https://www.wowhead.com/cata/item=68763/arcanum-of-the-dragonmaw
+    68767, # https://www.wowhead.com/cata/item=68767/arcanum-of-the-wildhammer
+
+    68774, # https://www.wowhead.com/cata/item=68774/greater-inscription-of-vicious-agility
 }
 
 
-BUILD = sys.argv[1] if len(sys.argv) > 1 else "3.4.3.53788"
+BUILD = sys.argv[1] if len(sys.argv) > 1 else "4.4.0.54737"
 URL_PATTERN = "https://wago.tools/db2/{}/csv?build={}"
 SESSION = requests_cache.CachedSession("db-wago.tools")
 
