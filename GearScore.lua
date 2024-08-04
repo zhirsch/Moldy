@@ -74,6 +74,9 @@ local GS_Colors = {
 
 local function GetItemScore(itemLink)
     local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = GetItemInfo(itemLink)
+    if not itemQuality then
+        return 0
+    end
     if itemQuality == Enum.ItemQuality.Heirloom then
         itemLevel = 187
     end
