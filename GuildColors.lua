@@ -112,7 +112,7 @@ local function WhoList_Entry(i, offset)
     return
   end
 
-  local selectedId = UIDropDownMenu_GetSelectedID(WhoFrameDropDown)
+  local selectedId = MenuUtil.GetSelections(WhoFrameDropdown:GetMenuDescription())[1].data.value
   local value1 = ({
     [1] = GetRealZoneText(),
     [2] = GetGuildInfo("player"),
