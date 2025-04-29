@@ -78,6 +78,7 @@ end
 
 function MoldyReputation:ReputationChangeFilter(_, _, chatmsg, ...)
 	local factionId, change = ParseMessage(chatmsg)
+	if factionId == 1169 then factionId = 1168 end
 	local standing = GetStanding(factionId)
 	local link = MakeLink(factionId)
 	local newchatmsg = string.format("%s %+d (%s)", link, change, standing)
