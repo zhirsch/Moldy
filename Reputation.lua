@@ -122,7 +122,9 @@ end
 
 function MoldyReputation:CHAT_MSG_COMBAT_FACTION_CHANGE(event, chatmsg, ...)
     local factionId, change = ParseMessage(chatmsg)
-
+    if not factionId then
+        return
+    end
     if not self.stats.session[factionId] then
         self.stats.session[factionId] = { total = 0 }
     end

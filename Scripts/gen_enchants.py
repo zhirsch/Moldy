@@ -128,89 +128,26 @@ INVENTORY_TYPES = {
 SPELL_BLACKLIST = {
     # Temporary
     2605, # https://www.wowhead.com/wotlk/spell=2605/sharpen-blade
-
-    # Can't tell the difference between:
-    # https://www.wowhead.com/wotlk/spell=13503/enchant-weapon-lesser-striking
-    7745, # https://www.wowhead.com/wotlk/spell=7745/enchant-2h-weapon-minor-impact
-
-    # Can't tell the difference between:
-    # https://www.wowhead.com/wotlk/spell=13693/enchant-weapon-striking
-    13529, # https://www.wowhead.com/wotlk/spell=13529/enchant-2h-weapon-lesser-impact
-
-    # Can't tell the difference between:
-    # https://www.wowhead.com/wotlk/spell=27967/enchant-weapon-major-striking
-    13937, # https://www.wowhead.com/wotlk/spell=13937/enchant-2h-weapon-greater-impact
-
-    # Can't tell the difference between:
-    # https://www.wowhead.com/wotlk/spell=20031/enchant-weapon-superior-striking
-    13695, # https://www.wowhead.com/wotlk/spell=13695/enchant-2h-weapon-impact
-
-    # Can't tell the difference between:
-    # https://www.wowhead.com/wotlk/spell=27917/enchant-bracer-spellpower
-    23802, # https://www.wowhead.com/wotlk/spell=23802/enchant-bracer-healing-power
-    27911, # https://www.wowhead.com/wotlk/spell=27911/enchant-bracer-superior-healing
-
-    # Unused?  Seems like this is the actual enchant:
-    # https://www.wowhead.com/wotlk/spell=30260/stabilitzed-eternium-scope
-    30255, # https://www.wowhead.com/wotlk/spell=30255/stabilized-eternium-scope
-    30258, # https://www.wowhead.com/wotlk/spell=30258/stabilized-eternium-scope
-
-    # Duplicates?
-     50903, # https://www.wowhead.com/wotlk/spell=50903/jormungar-leg-reinforcements
-     50904, # https://www.wowhead.com/wotlk/spell=50904/nerubian-leg-reinforcements
-     59778, # https://www.wowhead.com/wotlk/spell=59778/arcanum-of-dominance
-    359639, # https://www.wowhead.com/wotlk/spell=359639/enchant-bracer-assault
-    359640, # https://www.wowhead.com/wotlk/spell=359640/enchant-cloak-stealth
-    359641, # https://www.wowhead.com/wotlk/spell=359641/enchant-gloves-superior-agility
-    359642, # https://www.wowhead.com/wotlk/spell=359642/enchant-weapon-mighty-spirit
-    359685, # https://www.wowhead.com/wotlk/spell=359685/enchant-shield-resistance
-    359847, # https://www.wowhead.com/wotlk/spell=359847/enchant-cloak-subtlety
-    359858, # https://www.wowhead.com/wotlk/spell=359858/enchant-gloves-threat
-    359895, # https://www.wowhead.com/wotlk/spell=359895/enchant-shield-frost-resistance
-    359949, # https://www.wowhead.com/wotlk/spell=359949/enchant-cloak-greater-nature-resistance
-    359950, # https://www.wowhead.com/wotlk/spell=359950/enchant-cloak-greater-fire-resistance
-
-    # Mounts
-    47101, # https://www.wowhead.com/wotlk/spell=47101/test-riding-crop-enchant
-    47103, # https://www.wowhead.com/wotlk/spell=47103/riding-crop
-    48401, # https://www.wowhead.com/wotlk/spell=48401/carrot-on-a-stick
-    48555, # https://www.wowhead.com/wotlk/spell=48555/skybreaker-whip
-    48556, # https://www.wowhead.com/wotlk/spell=48556/carrot-on-a-stick
-    48557, # https://www.wowhead.com/wotlk/spell=48557/riding-crop
-
-    # Testing
-    14847, # https://www.wowhead.com/wotlk/spell=14847/test-enchant-fire-weapon
-    19927, # https://www.wowhead.com/wotlk/spell=19927/test-enchant-weapon-flame
-    44119, # https://www.wowhead.com/wotlk/spell=44119/enchant-bracer-template
-    47147, # https://www.wowhead.com/wotlk/spell=47147/test-on-use-enchant
-    47242, # https://www.wowhead.com/wotlk/spell=47242/test-on-use-enchant-charges
-    47715, # https://www.wowhead.com/wotlk/spell=47715/enchant-template
-    48036, # https://www.wowhead.com/wotlk/spell=48036/enchant-chest-test
-    50358, # https://www.wowhead.com/wotlk/spell=50358/test-skill-req-enchant
-    68274, # https://www.wowhead.com/cata/spell=68274/owen-test-recipe
 }
 
 ITEM_BLACKLIST = {
-    # Don't exist.
-    28876, 28877, 28879, 28880, 28883, 28884, 28890, 28891, 28892, 28893, 28894,
-    28895, 28896, 28897, 28898, 28899, 28900, 28901, 28902, 34110, 35438, 72070,
+    # Missing
+    72070, # https://www.wowhead.com/mop-classic/item=72070/enchant-gloves-assault
 
     41605, # https://www.wowhead.com/wotlk/item=41605/zzdeprecated-sanctified-spellthread
     41606, # https://www.wowhead.com/wotlk/item=41606/zzdeprecated-masters-spellthread
-    44125, # https://www.wowhead.com/wotlk/item=44125/zzzoldlesser-inscription-of-template-ph
-    44126, # https://www.wowhead.com/wotlk/item=44126/zzzoldgreater-inscription-of-template-ph
 
-    62422, # https://www.wowhead.com/cata/item=62422/arcanum-of-the-wildhammer
-    68720, # https://www.wowhead.com/cata/item=68720/arcanum-of-the-dragonmaw
-    68722, # https://www.wowhead.com/cata/item=68722/arcanum-of-the-wildhammer
-    68763, # https://www.wowhead.com/cata/item=68763/arcanum-of-the-dragonmaw
-    68767, # https://www.wowhead.com/cata/item=68767/arcanum-of-the-wildhammer
-
+    # Two items give the same enchant, arbitrarily pick one of them.
+    37311, # https://www.wowhead.com/mop-classic/item=37311/skybreaker-whip
     68774, # https://www.wowhead.com/cata/item=68774/greater-inscription-of-vicious-agility
 }
 
+# Cataclysm (unknown): 4.4.0.54737
+# Mists of Panderia (pre-patch): 5.5.0.61798
+if len(sys.argv) <= 1:
+    sys.exit("usage: python3 gen_enchants.py <build>")
 
-BUILD = sys.argv[1] if len(sys.argv) > 1 else "4.4.0.54737"
+BUILD = sys.argv[1]
 URL_PATTERN = "https://wago.tools/db2/{}/csv?build={}"
 SESSION = requests_cache.CachedSession("db-wago.tools")
 
