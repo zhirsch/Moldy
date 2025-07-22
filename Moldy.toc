@@ -6,6 +6,7 @@ embeds.xml
 
 Moldy.lua
 
+AutoRoll.lua
 ChatSounds.lua
 CircularBuffer.lua
 Deformat.lua
@@ -16,6 +17,7 @@ GuildColors.lua
 MerchantSearch.lua
 Midsummer.lua
 Quiet.lua
+ReforgeTooltip.lua
 Reputation.lua
 ShamanColor.lua
 ShowCaster.lua
