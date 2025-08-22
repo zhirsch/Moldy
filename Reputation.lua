@@ -27,40 +27,37 @@ local function ParseMessage(chatmsg)
         end
     end
     if not faction then
+        faction, amount, _ = Moldy.Deformat(chatmsg, FACTION_STANDING_INCREASED_ACH_BONUS)
+    end
+    if not faction then
         return nil
     end
     for i = 1, GetNumFactions() do
         local name, _, _, _, _, _, _, _, _, _, _, _, _, factionId = GetFactionInfo(i)
         if name == faction then
-            return factionId, amount
+            return factionId, amount, i
         end
     end
     return nil
 end
 
 local function GetStanding(factionId)
-    local _, _, standingId, _, _, value = GetFactionInfoByID(factionId)
-
-    if value < -6000 then
-        value = value + 42000
-    elseif value < -3000 then
-        value = value + 6000
-    elseif value < 0 then
-        value = value + 3000
-    elseif value < 3000 then
-        value = value + 0
-    elseif value < 9000 then
-        value = value - 3000
-    elseif value < 21000 then
-        value = value - 9000
-    elseif value < 42000 then
-        value = value - 21000
-    elseif value < 42999 then
-        value = value - 42000
+    local standingId, reaction, value, nextThreshold
+    local friendship = C_GossipInfo.GetFriendshipReputation(factionId)
+    if friendship.friendshipFactionID > 0 then
+        local rank = C_GossipInfo.GetFriendshipReputationRanks(factionId)
+        standingId = rank.currentLevel + 2
+        reaction = friendship.reaction
+        value = friendship.standing - friendship.reactionThreshold
+        nextThreshold = friendship.nextThreshold - friendship.reactionThreshold
+    else
+        local faction = {GetFactionInfoByID(factionId)}
+        standingId = faction[3]
+        reaction = STANDINGS[standingId].name
+        value = faction[6] - faction[4]
+        nextThreshold = faction[5] - faction[4]
     end
-
-    local standing = STANDINGS[standingId]
-    return string.format("%s %d / %d", standing.color:WrapTextInColorCode(standing.name), value, standing.max)
+    return string.format("%s %d / %d", STANDINGS[standingId].color:WrapTextInColorCode(reaction), value, nextThreshold)
 end
 
 local function MakeLink(factionId)
@@ -77,11 +74,12 @@ local function ParseLink(link)
 end
 
 function MoldyReputation:ReputationChangeFilter(_, _, chatmsg, ...)
-    local factionId, change = ParseMessage(chatmsg)
+    local factionId, change, index = ParseMessage(chatmsg)
     if not factionId then
         return false, chatmsg, ...
     end
     if factionId == 1169 then factionId = 1168 end
+    SetWatchedFactionIndex(index)
     local standing = GetStanding(factionId)
     local link = MakeLink(factionId)
     local newchatmsg = string.format("%s %+d (%s)", link, change, standing)
