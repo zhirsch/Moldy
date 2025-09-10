@@ -134,7 +134,7 @@ end
 local function IsWeaponTypeUseable(unit, itemLink)
     local className = UnitClassBase(unit)
     local _, _, _, _, _, _, _, _, _, _, _, _, subclassId = C_Item.GetItemInfo(itemLink)
-    return (not not CLASS_WEAPON_PROFICIENCIES[className][subclassId]) and IsPrimaryStat(unit, itemLink)
+    return (not not CLASS_WEAPON_TYPES[className][subclassId]) and IsPrimaryStat(unit, itemLink)
 end
 
 local function IsArmorSpecializationActive(className, subclassId)
