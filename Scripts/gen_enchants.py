@@ -57,6 +57,7 @@ WEAPON_SUBCLASS_TO_INVENTORY_TYPES = {
     "Obsolete3":   set(),
     "Crossbow":    {"INVTYPE_RANGED"},
     "Wand":        {"INVTYPE_RANGED"},
+    "Wand":        {"INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT"},
     "Fishingpole": {"INVTYPE_2HWEAPON"},
 }
 
@@ -122,11 +123,18 @@ INVENTORY_TYPES = {
     26: "INVTYPE_RANGEDRIGHT",
     27: "INVTYPE_QUIVER",
     28: "INVTYPE_RELIC",
+    29: "INVTYPE_PROFESSION_TOOL",
+    30: "INVTYPE_PROFESSION_GEAR",
+    31: "INVTYPE_EQUIPABLESPELL_OFFENSIVE",
+    32: "INVTYPE_EQUIPABLESPELL_UTILITY",
+    33: "INVTYPE_EQUIPABLESPELL_DEFENSIVE",
+    34: "INVTYPE_EQUIPABLESPELL_WEAPON",
 }
 
 
 SPELL_BLACKLIST = {
     # Temporary
+    # Temporary enchants
     2605, # https://www.wowhead.com/wotlk/spell=2605/sharpen-blade
 }
 
@@ -144,6 +152,8 @@ ITEM_BLACKLIST = {
 
 # Cataclysm (unknown): 4.4.0.54737
 # Mists of Panderia (pre-patch): 5.5.0.61798
+# Mists of Pandaria (pre-patch): 5.5.0.61798
+# Mists of Pandaria (phase 1): 5.5.0.62959
 if len(sys.argv) <= 1:
     sys.exit("usage: python3 gen_enchants.py <build>")
 

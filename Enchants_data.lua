@@ -19,7 +19,7 @@ Moldy.Enchants:add(34, "spell:7218", "item:6043", {"INVTYPE_2HWEAPON"})
 -- Enchant: Fiery Blaze
 Moldy.Enchants:add(36, "spell:6296", "item:5421", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Weapon Chain
-Moldy.Enchants:add(37, "spell:7220", "item:6041", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(37, "spell:7220", "item:6041", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Chest - Minor Health
 Moldy.Enchants:add(41, "spell:7420", "item:38766", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Iron Shield Spike
@@ -31,7 +31,7 @@ Moldy.Enchants:add(63, "spell:13538", "item:38798", {"INVTYPE_CHEST", "INVTYPE_R
 -- Enchant Boots - Minor Stamina
 Moldy.Enchants:add(66, "spell:7863", "item:38785", {"INVTYPE_FEET"})
 -- Enchant Weapon - Lesser Striking
-Moldy.Enchants:add(241, "spell:13503", "item:38794", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(241, "spell:13503", "item:38794", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Chest - Lesser Health
 Moldy.Enchants:add(242, "spell:7748", "item:38773", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Bracer - Minor Spirit
@@ -43,9 +43,9 @@ Moldy.Enchants:add(247, "spell:7867", "item:38786", {"INVTYPE_FEET"})
 -- Enchant Bracer - Minor Strength
 Moldy.Enchants:add(248, "spell:7782", "item:38778", {"INVTYPE_WRIST"})
 -- Enchant Weapon - Minor Beastslayer
-Moldy.Enchants:add(249, "spell:7786", "item:38779", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(249, "spell:7786", "item:38779", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Minor Striking
-Moldy.Enchants:add(250, "spell:7788", "item:38780", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(250, "spell:7788", "item:38780", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Chest - Health
 Moldy.Enchants:add(254, "spell:7857", "item:38782", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant 2H Weapon - Lesser Spirit
@@ -69,9 +69,9 @@ Moldy.Enchants:add(744, "spell:13421", "item:38790", {"INVTYPE_CLOAK"})
 -- Enchant Cloak - Minor Protection
 Moldy.Enchants:add(783, "spell:7771", "item:38775", {"INVTYPE_CLOAK"})
 -- Enchant Weapon - Fiery Weapon
-Moldy.Enchants:add(803, "spell:13898", "item:38838", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(803, "spell:13898", "item:38838", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Greater Striking
-Moldy.Enchants:add(805, "spell:13943", "item:38848", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(805, "spell:13943", "item:38848", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Lesser Strength
 Moldy.Enchants:add(823, "spell:13536", "item:38797", {"INVTYPE_WRIST"})
 -- Enchant Chest - Mana
@@ -95,9 +95,9 @@ Moldy.Enchants:add(851, "spell:20024", "item:38864", {"INVTYPE_FEET"})
 -- Enchant Boots - Stamina
 Moldy.Enchants:add(852, "spell:13836", "item:38830", {"INVTYPE_FEET"})
 -- Enchant Weapon - Lesser Beastslayer
-Moldy.Enchants:add(853, "spell:13653", "item:38813", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(853, "spell:13653", "item:38813", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Lesser Elemental Slayer
-Moldy.Enchants:add(854, "spell:13655", "item:38814", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(854, "spell:13655", "item:38814", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Strength
 Moldy.Enchants:add(856, "spell:13661", "item:38817", {"INVTYPE_WRIST"})
 -- Enchant Chest - Greater Mana
@@ -129,7 +129,7 @@ Moldy.Enchants:add(910, "spell:359640", "item:187738", {"INVTYPE_CLOAK"})
 -- Enchant Boots - Minor Speed
 Moldy.Enchants:add(911, "spell:13890", "item:38837", {"INVTYPE_FEET"})
 -- Enchant Weapon - Demonslaying
-Moldy.Enchants:add(912, "spell:13915", "item:38840", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(912, "spell:13915", "item:38840", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Chest - Superior Mana
 Moldy.Enchants:add(913, "spell:13917", "item:38841", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Bracer - Dodge
@@ -161,7 +161,7 @@ Moldy.Enchants:add(1075, "spell:44528", "item:38966", {"INVTYPE_FEET"})
 -- Enchant Cloak - Major Agility
 Moldy.Enchants:add(1099, "spell:60663", "item:44457", {"INVTYPE_CLOAK"})
 -- Enchant Weapon - Exceptional Agility
-Moldy.Enchants:add(1103, "spell:44633", "item:38995", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(1103, "spell:44633", "item:38995", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Exceptional Intellect
 Moldy.Enchants:add(1119, "spell:44555", "item:38968", {"INVTYPE_WRIST"})
 -- Enchant Template
@@ -219,7 +219,7 @@ Moldy.Enchants:add(1600, "spell:60616", "item:38971", {"INVTYPE_WRIST"})
 -- Enchant Gloves - Crusher
 Moldy.Enchants:add(1603, "spell:60668", "item:44458", {"INVTYPE_HAND"})
 -- Enchant Weapon - Greater Potency
-Moldy.Enchants:add(1606, "spell:60621", "item:44453", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(1606, "spell:60621", "item:44453", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Thorium Shield Spike
 Moldy.Enchants:add(1704, "spell:16623", "item:12645", {"INVTYPE_SHIELD"})
 -- Armor +40
@@ -249,19 +249,19 @@ Moldy.Enchants:add(1892, "spell:20026", "item:38866", {"INVTYPE_CHEST", "INVTYPE
 -- Enchant Chest - Major Mana
 Moldy.Enchants:add(1893, "spell:20028", "item:38867", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Weapon - Icy Chill
-Moldy.Enchants:add(1894, "spell:20029", "item:38868", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(1894, "spell:20029", "item:38868", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant 2H Weapon - Superior Impact
 Moldy.Enchants:add(1896, "spell:20030", "item:38869", {"INVTYPE_2HWEAPON"})
 -- Enchant 2H Weapon - Impact
 Moldy.Enchants:add(1897, "spell:13695", "item:38822", {"INVTYPE_2HWEAPON"})
 -- Enchant Weapon - Superior Striking
-Moldy.Enchants:add(1897, "spell:20031", "item:38870", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(1897, "spell:20031", "item:38870", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Lifestealing
-Moldy.Enchants:add(1898, "spell:20032", "item:38871", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(1898, "spell:20032", "item:38871", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Unholy Weapon
-Moldy.Enchants:add(1899, "spell:20033", "item:38872", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(1899, "spell:20033", "item:38872", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Crusader
-Moldy.Enchants:add(1900, "spell:20034", "item:38873", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(1900, "spell:20034", "item:38873", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant 2H Weapon - Major Spirit
 Moldy.Enchants:add(1903, "spell:20035", "item:38874", {"INVTYPE_2HWEAPON"})
 -- Enchant 2H Weapon - Major Intellect
@@ -281,7 +281,7 @@ Moldy.Enchants:add(2332, "spell:60767", "item:44470", {"INVTYPE_WRIST"})
 -- Enchant Chest - Greater Mana Restoration
 Moldy.Enchants:add(2381, "spell:44509", "item:38962", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Weapon - Winter's Might
-Moldy.Enchants:add(2443, "spell:21931", "item:38876", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2443, "spell:21931", "item:38876", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Flame Mantle of the Dawn
 Moldy.Enchants:add(2483, "spell:22593", "item:18169", {"INVTYPE_SHOULDER"})
 -- Frost Mantle of the Dawn
@@ -297,9 +297,9 @@ Moldy.Enchants:add(2488, "spell:22599", "item:18182", {"INVTYPE_SHOULDER"})
 -- Core Armor Kit
 Moldy.Enchants:add(2503, "spell:22725", "item:18251", {"INVTYPE_CHEST", "INVTYPE_FEET", "INVTYPE_HAND", "INVTYPE_LEGS", "INVTYPE_ROBE"})
 -- Enchant Weapon - Spellpower
-Moldy.Enchants:add(2504, "spell:22749", "item:38877", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2504, "spell:22749", "item:38877", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Healing Power
-Moldy.Enchants:add(2505, "spell:22750", "item:38878", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2505, "spell:22750", "item:38878", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Biznicks 247x128 Accurascope
 Moldy.Enchants:add(2523, "spell:22779", "item:18283", {"INVTYPE_RANGED"})
 -- Arcanum of Rapidity
@@ -309,9 +309,9 @@ Moldy.Enchants:add(2544, "spell:22844", "item:18330", {"INVTYPE_LEGS"})
 -- Arcanum of Protection
 Moldy.Enchants:add(2545, "spell:22846", "item:18331", {"INVTYPE_LEGS"})
 -- Enchant Weapon - Strength
-Moldy.Enchants:add(2563, "spell:23799", "item:38879", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2563, "spell:23799", "item:38879", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Agility
-Moldy.Enchants:add(2564, "spell:23800", "item:38880", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2564, "spell:23800", "item:38880", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Gloves - Superior Agility
 Moldy.Enchants:add(2564, "spell:25080", "item:38890", {"INVTYPE_HAND"})
 -- Enchant Gloves - Superior Agility
@@ -319,11 +319,11 @@ Moldy.Enchants:add(2564, "spell:359641", "item:187739", {"INVTYPE_HAND"})
 -- Enchant Bracer - Mana Regeneration
 Moldy.Enchants:add(2565, "spell:23801", "item:38881", {"INVTYPE_WRIST"})
 -- Enchant Weapon - Mighty Spirit
-Moldy.Enchants:add(2567, "spell:23803", "item:38883", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2567, "spell:23803", "item:38883", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Mighty Spirit
 Moldy.Enchants:add(2567, "spell:359642", "item:187740", {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Mighty Intellect
-Moldy.Enchants:add(2568, "spell:23804", "item:38884", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2568, "spell:23804", "item:38884", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Presence of Might
 Moldy.Enchants:add(2583, "spell:24149", "item:19782", {"INVTYPE_LEGS"})
 -- Syncretist's Sigil
@@ -405,25 +405,25 @@ Moldy.Enchants:add(2661, "spell:44616", "item:38987", {"INVTYPE_WRIST"})
 -- Enchant Cloak - Major Armor
 Moldy.Enchants:add(2662, "spell:27961", "item:38914", {"INVTYPE_CLOAK"})
 -- Enchant Weapon - Major Intellect
-Moldy.Enchants:add(2666, "spell:27968", "item:38918", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2666, "spell:27968", "item:38918", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant 2H Weapon - Savagery
 Moldy.Enchants:add(2667, "spell:27971", "item:38919", {"INVTYPE_2HWEAPON"})
 -- Enchant Weapon - Potency
-Moldy.Enchants:add(2668, "spell:27972", "item:38920", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2668, "spell:27972", "item:38920", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Major Spellpower
-Moldy.Enchants:add(2669, "spell:27975", "item:38921", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2669, "spell:27975", "item:38921", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant 2H Weapon - Major Agility
 Moldy.Enchants:add(2670, "spell:27977", "item:38922", {"INVTYPE_2HWEAPON"})
 -- Enchant Weapon - Sunfire
-Moldy.Enchants:add(2671, "spell:27981", "item:38923", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2671, "spell:27981", "item:38923", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Soulfrost
-Moldy.Enchants:add(2672, "spell:27982", "item:38924", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2672, "spell:27982", "item:38924", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Mongoose
-Moldy.Enchants:add(2673, "spell:27984", "item:38925", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2673, "spell:27984", "item:38925", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Spellsurge
-Moldy.Enchants:add(2674, "spell:28003", "item:38926", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2674, "spell:28003", "item:38926", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Battlemaster
-Moldy.Enchants:add(2675, "spell:28004", "item:38927", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(2675, "spell:28004", "item:38927", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Restore Mana Prime
 Moldy.Enchants:add(2679, "spell:27913", "item:38901", {"INVTYPE_WRIST"})
 -- Savage Guard
@@ -565,11 +565,11 @@ Moldy.Enchants:add(3096, "spell:37891", nil, {"INVTYPE_HEAD"})
 -- Enchant Chest - Restore Mana Prime
 Moldy.Enchants:add(3150, "spell:33991", "item:38929", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Weapon - Greater Agility
-Moldy.Enchants:add(3222, "spell:42620", "item:38947", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3222, "spell:42620", "item:38947", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Adamantite Weapon Chain
-Moldy.Enchants:add(3223, "spell:42687", "item:33185", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3223, "spell:42687", "item:33185", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Executioner
-Moldy.Enchants:add(3225, "spell:42974", "item:38948", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3225, "spell:42974", "item:38948", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Template
 Moldy.Enchants:add(3228, "spell:44119", nil, {"INVTYPE_WRIST"})
 -- Enchant Shield - Resilience
@@ -591,9 +591,9 @@ Moldy.Enchants:add(3236, "spell:44492", "item:38955", {"INVTYPE_CHEST", "INVTYPE
 -- Enchant Gloves - Gatherer
 Moldy.Enchants:add(3238, "spell:44506", "item:38960", {"INVTYPE_HAND"})
 -- Enchant Weapon - Icebreaker
-Moldy.Enchants:add(3239, "spell:44524", "item:38965", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3239, "spell:44524", "item:38965", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Lifeward
-Moldy.Enchants:add(3241, "spell:44576", "item:38972", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3241, "spell:44576", "item:38972", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Cloak - Minor Power
 Moldy.Enchants:add(3243, "spell:44582", "item:38973", {"INVTYPE_CLOAK"})
 -- Enchant Boots - Greater Vitality
@@ -607,7 +607,7 @@ Moldy.Enchants:add(3247, "spell:44595", "item:38981", {"INVTYPE_2HWEAPON"})
 -- Enchant Gloves - Greater Blasting
 Moldy.Enchants:add(3249, "spell:44612", "item:38985", {"INVTYPE_HAND"})
 -- Enchant Weapon - Giant Slayer
-Moldy.Enchants:add(3251, "spell:44621", "item:38988", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3251, "spell:44621", "item:38988", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Chest - Super Stats
 Moldy.Enchants:add(3252, "spell:44623", "item:38989", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Gloves - Armsman
@@ -619,7 +619,7 @@ Moldy.Enchants:add(3260, "spell:44769", "item:34207", {"INVTYPE_HAND"})
 -- Truesilver Fishing Line
 Moldy.Enchants:add(3269, "spell:45697", "item:34836", {"INVTYPE_2HWEAPON"})
 -- Enchant Weapon - Deathfrost
-Moldy.Enchants:add(3273, "spell:46578", "item:38998", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3273, "spell:46578", "item:38998", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Riding Crop
 Moldy.Enchants:add(3289, "spell:47103", "item:37313", {""})
 -- Skybreaker Whip
@@ -691,7 +691,7 @@ Moldy.Enchants:add(3728, "spell:55769", nil, {"INVTYPE_CLOAK"})
 -- Swordguard Embroidery
 Moldy.Enchants:add(3730, "spell:55777", nil, {"INVTYPE_CLOAK"})
 -- Titanium Weapon Chain
-Moldy.Enchants:add(3731, "spell:55836", "item:41976", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3731, "spell:55836", "item:41976", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Titanium Shield Spike
 Moldy.Enchants:add(3748, "spell:56353", "item:42500", {"INVTYPE_SHIELD"})
 -- Falcon's Call
@@ -709,11 +709,11 @@ Moldy.Enchants:add(3776, "spell:58128", "item:43303", {"INVTYPE_SHOULDER"})
 -- Inscription of Kings
 Moldy.Enchants:add(3777, "spell:58129", "item:43304", {"INVTYPE_SHOULDER"})
 -- Enchant Weapon - Accuracy
-Moldy.Enchants:add(3788, "spell:59619", "item:44497", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3788, "spell:59619", "item:44497", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Berserking
-Moldy.Enchants:add(3789, "spell:59621", "item:44493", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3789, "spell:59621", "item:44493", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Black Magic
-Moldy.Enchants:add(3790, "spell:59625", "item:43987", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3790, "spell:59625", "item:43987", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Ring - Lesser Stamina
 Moldy.Enchants:add(3791, "spell:59636", nil, {"INVTYPE_FINGER"})
 -- Inscription of Triumph
@@ -773,7 +773,7 @@ Moldy.Enchants:add(3828, "spell:44630", "item:38992", {"INVTYPE_2HWEAPON"})
 -- Enchant Gloves - Greater Assault
 Moldy.Enchants:add(3829, "spell:44513", "item:38964", {"INVTYPE_HAND"})
 -- Enchant Weapon - Exceptional Spellpower
-Moldy.Enchants:add(3830, "spell:44629", "item:38991", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3830, "spell:44629", "item:38991", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Cloak - Greater Speed
 Moldy.Enchants:add(3831, "spell:47898", "item:39003", {"INVTYPE_CLOAK"})
 -- Enchant Chest - Powerful Stats
@@ -781,9 +781,9 @@ Moldy.Enchants:add(3832, "spell:60692", "item:44465", {"INVTYPE_CHEST", "INVTYPE
 -- Owen Test Recipe
 Moldy.Enchants:add(3832, "spell:68274", "item:49130", {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Weapon - Superior Potency
-Moldy.Enchants:add(3833, "spell:60707", "item:44466", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3833, "spell:60707", "item:44466", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Mighty Spellpower
-Moldy.Enchants:add(3834, "spell:60714", "item:44467", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3834, "spell:60714", "item:44467", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Master's Inscription of the Axe
 Moldy.Enchants:add(3835, "spell:61117", nil, {"INVTYPE_SHOULDER"})
 -- Master's Inscription of the Crag
@@ -801,11 +801,11 @@ Moldy.Enchants:add(3842, "spell:61271", nil, {"INVTYPE_HEAD"})
 -- Diamond-cut Refractor Scope
 Moldy.Enchants:add(3843, "spell:61468", "item:44739", {"INVTYPE_RANGED"})
 -- Enchant Weapon - Exceptional Spirit
-Moldy.Enchants:add(3844, "spell:44510", "item:38963", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3844, "spell:44510", "item:38963", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Greater Assault
 Moldy.Enchants:add(3845, "spell:44575", "item:44815", {"INVTYPE_WRIST"})
 -- Enchant Weapon - Major Healing
-Moldy.Enchants:add(3846, "spell:34010", "item:38946", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3846, "spell:34010", "item:38946", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Rune of the Stoneskin Gargoyle
 Moldy.Enchants:add(3847, "spell:62158", nil, {"INVTYPE_2HWEAPON"})
 -- Titanium Plating
@@ -813,7 +813,7 @@ Moldy.Enchants:add(3849, "spell:62201", "item:44936", {"INVTYPE_SHIELD"})
 -- Enchant Bracer - Major Stamina
 Moldy.Enchants:add(3850, "spell:62256", "item:44947", {"INVTYPE_WRIST"})
 -- Enchant Weapon - Titanguard
-Moldy.Enchants:add(3851, "spell:62257", "item:44946", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3851, "spell:62257", "item:44946", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Greater Inscription of the Gladiator
 Moldy.Enchants:add(3852, "spell:62384", "item:44957", {"INVTYPE_SHOULDER"})
 -- Earthen Leg Armor
@@ -827,9 +827,9 @@ Moldy.Enchants:add(3858, "spell:63746", "item:45628", {"INVTYPE_FEET"})
 -- Reticulated Armor Webbing
 Moldy.Enchants:add(3860, "spell:63770", nil, {"INVTYPE_HAND"})
 -- Enchant Weapon - Blade Ward
-Moldy.Enchants:add(3869, "spell:64441", "item:46026", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3869, "spell:64441", "item:46026", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Blood Draining
-Moldy.Enchants:add(3870, "spell:64579", "item:46098", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(3870, "spell:64579", "item:46098", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Sanctified Spellthread
 Moldy.Enchants:add(3872, "spell:56039", nil, {"INVTYPE_LEGS"})
 -- Master's Spellthread
@@ -851,9 +851,9 @@ Moldy.Enchants:add(4064, "spell:74192", "item:52745", {"INVTYPE_CLOAK"})
 -- Enchant Bracer - Speed
 Moldy.Enchants:add(4065, "spell:74193", "item:52746", {"INVTYPE_WRIST"})
 -- Enchant Weapon - Mending
-Moldy.Enchants:add(4066, "spell:74195", "item:52747", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4066, "spell:74195", "item:52747", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Avalanche
-Moldy.Enchants:add(4067, "spell:74197", "item:52748", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4067, "spell:74197", "item:52748", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Gloves - Haste
 Moldy.Enchants:add(4068, "spell:74198", "item:52749", {"INVTYPE_HAND"})
 -- Enchant Boots - Haste
@@ -867,7 +867,7 @@ Moldy.Enchants:add(4072, "spell:74202", "item:52753", {"INVTYPE_CLOAK"})
 -- Enchant Shield - Protection
 Moldy.Enchants:add(4073, "spell:74207", "item:52754", {"INVTYPE_SHIELD"})
 -- Enchant Weapon - Elemental Slayer
-Moldy.Enchants:add(4074, "spell:74211", "item:52755", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4074, "spell:74211", "item:52755", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Gloves - Exceptional Strength
 Moldy.Enchants:add(4075, "spell:74212", "item:52756", {"INVTYPE_HAND"})
 -- Enchant Boots - Major Agility
@@ -887,9 +887,9 @@ Moldy.Enchants:add(4081, "spell:74218", nil, {"INVTYPE_FINGER"})
 -- Enchant Gloves - Greater Expertise
 Moldy.Enchants:add(4082, "spell:74220", "item:52759", {"INVTYPE_HAND"})
 -- Enchant Weapon - Hurricane
-Moldy.Enchants:add(4083, "spell:74223", "item:52760", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4083, "spell:74223", "item:52760", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Heartsong
-Moldy.Enchants:add(4084, "spell:74225", "item:52761", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4084, "spell:74225", "item:52761", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Shield - Mastery
 Moldy.Enchants:add(4085, "spell:74226", "item:52762", {"INVTYPE_SHIELD"})
 -- Enchant Bracer - Superior Dodge
@@ -915,11 +915,11 @@ Moldy.Enchants:add(4095, "spell:74239", "item:52772", {"INVTYPE_WRIST"})
 -- Enchant Cloak - Greater Intellect
 Moldy.Enchants:add(4096, "spell:74240", "item:52773", {"INVTYPE_CLOAK"})
 -- Enchant Weapon - Power Torrent
-Moldy.Enchants:add(4097, "spell:74242", "item:52774", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4097, "spell:74242", "item:52774", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Windwalk
-Moldy.Enchants:add(4098, "spell:74244", "item:52775", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4098, "spell:74244", "item:52775", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Landslide
-Moldy.Enchants:add(4099, "spell:74246", "item:52776", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4099, "spell:74246", "item:52776", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Cloak - Greater Critical Strike
 Moldy.Enchants:add(4100, "spell:74247", "item:52777", {"INVTYPE_CLOAK"})
 -- Enchant Bracer - Greater Critical Strike
@@ -1033,7 +1033,7 @@ Moldy.Enchants:add(4215, "spell:92433", "item:55055", {"INVTYPE_SHIELD"})
 -- Pyrium Shield Spike
 Moldy.Enchants:add(4216, "spell:92437", "item:55056", {"INVTYPE_SHIELD"})
 -- Pyrium Weapon Chain
-Moldy.Enchants:add(4217, "spell:93448", "item:55057", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4217, "spell:93448", "item:55057", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Deleted Enchantment Test (DO NOT LOCALIZE)
 Moldy.Enchants:add(4221, "spell:94953", "item:68009", {"INVTYPE_HEAD"})
 -- Mind Amplification Dish
@@ -1117,21 +1117,21 @@ Moldy.Enchants:add(4433, "spell:104420", "item:74722", {"INVTYPE_HAND"})
 -- Enchant Off-Hand - Major Intellect
 Moldy.Enchants:add(4434, "spell:104445", "item:74729", {"INVTYPE_HOLDABLE", "INVTYPE_SHIELD", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Windsong
-Moldy.Enchants:add(4441, "spell:104425", "item:74723", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4441, "spell:104425", "item:74723", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Jade Spirit
-Moldy.Enchants:add(4442, "spell:104427", "item:74724", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4442, "spell:104427", "item:74724", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Elemental Force
-Moldy.Enchants:add(4443, "spell:104430", "item:74725", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4443, "spell:104430", "item:74725", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Dancing Steel
-Moldy.Enchants:add(4444, "spell:104434", "item:74726", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4444, "spell:104434", "item:74726", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Colossus
-Moldy.Enchants:add(4445, "spell:104440", "item:74727", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4445, "spell:104440", "item:74727", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - River's Song
-Moldy.Enchants:add(4446, "spell:104442", "item:74728", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4446, "spell:104442", "item:74728", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Kyle's Test Enchantment
-Moldy.Enchants:add(4671, "spell:116501", nil, {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4671, "spell:116501", nil, {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Ninja (TEST VERSION)
-Moldy.Enchants:add(4687, "spell:108115", "item:77276", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4687, "spell:108115", "item:77276", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Phase Fingers
 Moldy.Enchants:add(4697, "spell:108789", nil, {"INVTYPE_HAND"})
 -- Incendiary Fireworks Launcher
@@ -1195,9 +1195,9 @@ Moldy.Enchants:add(4743, "spell:13945", "item:38849", {"INVTYPE_WRIST"})
 -- Enchant Shield - Greater Stamina
 Moldy.Enchants:add(4744, "spell:20017", "item:38861", {"INVTYPE_SHIELD"})
 -- Enchant Weapon - Striking
-Moldy.Enchants:add(4745, "spell:13693", "item:38821", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4745, "spell:13693", "item:38821", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Major Striking
-Moldy.Enchants:add(4746, "spell:27967", "item:38917", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4746, "spell:27967", "item:38917", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Cloak - Superior Agility
 Moldy.Enchants:add(4747, "spell:44500", "item:38959", {"INVTYPE_CLOAK"})
 -- Enchant Boots - Superior Agility
@@ -1295,7 +1295,7 @@ Moldy.Enchants:add(4915, "spell:113045", "item:87582", {"INVTYPE_SHOULDER"})
 -- Secret Serpent Pearl Inscription
 Moldy.Enchants:add(4916, "spell:113044", "item:87583", {"INVTYPE_SHOULDER"})
 -- Living Steel Weapon Chain
-Moldy.Enchants:add(4918, "spell:128286", "item:86597", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(4918, "spell:128286", "item:86597", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Exceptional Strength (Scaling)
 Moldy.Enchants:add(4992, "spell:130749", "item:89717", {"INVTYPE_WRIST"})
 -- Enchant Shield - Greater Parry
@@ -1311,7 +1311,7 @@ Moldy.Enchants:add(5004, "spell:131863", "item:82442", {"INVTYPE_LEGS"})
 -- Custom - Jaina - Crackling Lightning
 Moldy.Enchants:add(5029, "spell:139038", nil, {"INVTYPE_2HWEAPON", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Glorious Tyranny
-Moldy.Enchants:add(5035, "spell:139631", "item:95349", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(5035, "spell:139631", "item:95349", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Greater Crane Wing Inscription
 Moldy.Enchants:add(5055, "spell:141167", nil, {"INVTYPE_SHOULDER"})
 -- Enchant Cloak - Superior Intellect
@@ -1327,7 +1327,7 @@ Moldy.Enchants:add(5060, "spell:141175", nil, {"INVTYPE_FEET"})
 -- Enchant Off-Hand - Major Intellect
 Moldy.Enchants:add(5061, "spell:141176", nil, {"INVTYPE_HOLDABLE", "INVTYPE_SHIELD", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Jade Spirit
-Moldy.Enchants:add(5062, "spell:141177", nil, {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(5062, "spell:141177", nil, {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Synapse Springs
 Moldy.Enchants:add(5063, "spell:141330", nil, {"INVTYPE_HAND"})
 -- Enchant Chest - Super Resilience
@@ -1351,7 +1351,7 @@ Moldy.Enchants:add(5096, "spell:141977", nil, {"INVTYPE_FEET"})
 -- Enchant Off-Hand - Major Intellect
 Moldy.Enchants:add(5097, "spell:141978", nil, {"INVTYPE_HOLDABLE", "INVTYPE_SHIELD", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Jade Spirit
-Moldy.Enchants:add(5098, "spell:141981", nil, {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(5098, "spell:141981", nil, {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Chest - Super Resilience
 Moldy.Enchants:add(5099, "spell:141982", nil, {"INVTYPE_CHEST", "INVTYPE_ROBE"})
 -- Enchant Gloves - Superior Mastery
@@ -1367,9 +1367,9 @@ Moldy.Enchants:add(5112, "spell:142177", nil, {"INVTYPE_WRIST"})
 -- Enchant Ring - Greater Intellect
 Moldy.Enchants:add(5113, "spell:142178", nil, {"INVTYPE_FINGER"})
 -- Enchant Weapon - Spirit of Conquest
-Moldy.Enchants:add(5124, "spell:142469", "item:98164", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(5124, "spell:142469", "item:98164", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Weapon - Bloody Dancing Steel
-Moldy.Enchants:add(5125, "spell:142468", "item:98163", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
+Moldy.Enchants:add(5125, "spell:142468", "item:98163", {"INVTYPE_2HWEAPON", "INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT", "INVTYPE_WEAPON", "INVTYPE_WEAPONMAINHAND", "INVTYPE_WEAPONOFFHAND"})
 -- Enchant Bracer - Superior Healing
 Moldy.Enchants:add(5183, "spell:27911", "item:38900", {"INVTYPE_WRIST"})
 -- Enchant Bracer - Spellpower
