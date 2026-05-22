@@ -155,8 +155,12 @@ local function IsArmorTypeUseable(unit, itemLink)
     local _, _, _, _, _, _, _, _, itemEquipLoc, _, _, _, subclassId = C_Item.GetItemInfo(itemLink)
     local info = CLASS_ARMOR_SPECIALIZATIONS[className]
     if     IsArmorSpecializationActive(className, subclassId) then return IsPrimaryStat(unit, itemLink)
-    elseif itemEquipLoc == "INVTYPE_CLOAK"                    then return IsPrimaryStat(unit, itemLink)
-    elseif subclassId == Enum.ItemArmorSubclass.Generic       then return true
+    -- elseif itemEquipLoc == "INVTYPE_CLOAK"                    then return IsPrimaryStat(unit, itemLink)
+    -- elseif itemEquipLoc == "INVTYPE_TRINKET"                  then return IsPrimaryStat(unit, itemLink)
+    -- elseif itemEquipLoc == "INVTYPE_FINGER"                   then return IsPrimaryStat(unit, itemLink)
+    -- elseif itemEquipLoc == "INVTYPE_NECK"                     then return IsPrimaryStat(unit, itemLink)
+    -- elseif itemEquipLoc == "INVTYPE_HOLDABLE"                 then return IsPrimaryStat(unit, itemLink)
+    elseif subclassId == Enum.ItemArmorSubclass.Generic       then return IsPrimaryStat(unit, itemLink)
     elseif subclassId == Enum.ItemArmorSubclass.Cloth         then return IsPlayerSpell(9078) and IsPrimaryStat(unit, itemLink)
     elseif subclassId == Enum.ItemArmorSubclass.Leather       then return IsPlayerSpell(9077) and IsPrimaryStat(unit, itemLink)
     elseif subclassId == Enum.ItemArmorSubclass.Mail          then return IsPlayerSpell(8737) and IsPrimaryStat(unit, itemLink)
@@ -165,7 +169,7 @@ local function IsArmorTypeUseable(unit, itemLink)
     return false
 end
 
-local function IsItemUseable(unit, itemLink)
+function Moldy.IsItemUseable(unit, itemLink)
     local _, _, _, _, _, _, _, _, _, _, _, classId = C_Item.GetItemInfo(itemLink)
     if     classId == Enum.ItemClass.Weapon then return IsWeaponTypeUseable(unit, itemLink)
     elseif classId == Enum.ItemClass.Armor  then return IsArmorTypeUseable(unit, itemLink)
@@ -178,7 +182,7 @@ function Moldy.ShouldAutoRoll(itemLink)
     if itemQuality > Enum.ItemQuality.Good then
         return false
     end
-    if IsItemUseable("player", itemLink) then
+    if Moldy.IsItemUseable("player", itemLink) then
         return false
     end
     return true

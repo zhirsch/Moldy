@@ -14,11 +14,12 @@ Enchants.lua
 Enchants_data.lua
 GearScore.lua
 GuildColors.lua
-Loot.lua
+#Loot.lua
 MerchantSearch.lua
-Midsummer.lua
+#Midsummer.lua
 Quiet.lua
-ReforgeTooltip.lua
+#ReforgeTooltip.lua
 Reputation.lua
 ShamanColor.lua
 ShowCaster.lua
+XP.lua

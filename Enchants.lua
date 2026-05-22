@@ -15,6 +15,9 @@ Enchants.prototype = {
             invtypes = invtypes,
         })
     end,
+    has_enchant = function(self, link)
+        return not string.match(link, "item:%d+:(%d+):")
+    end,
     get = function(self, link)
         local enchantId = string.match(link, "item:%d+:(%d+):")
         if not enchantId then
