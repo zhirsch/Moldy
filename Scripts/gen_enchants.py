@@ -56,7 +56,6 @@ WEAPON_SUBCLASS_TO_INVENTORY_TYPES = {
     "Thrown":      {"INVTYPE_RANGED"},
     "Obsolete3":   set(),
     "Crossbow":    {"INVTYPE_RANGED"},
-    "Wand":        {"INVTYPE_RANGED"},
     "Wand":        {"INVTYPE_RANGED", "INVTYPE_RANGEDRIGHT"},
     "Fishingpole": {"INVTYPE_2HWEAPON"},
 }
@@ -133,7 +132,6 @@ INVENTORY_TYPES = {
 
 
 SPELL_BLACKLIST = {
-    # Temporary
     # Temporary enchants
     2605, # https://www.wowhead.com/wotlk/spell=2605/sharpen-blade
 }
@@ -151,7 +149,6 @@ ITEM_BLACKLIST = {
 }
 
 # Cataclysm (unknown): 4.4.0.54737
-# Mists of Panderia (pre-patch): 5.5.0.61798
 # Mists of Pandaria (pre-patch): 5.5.0.61798
 # Mists of Pandaria (phase 1): 5.5.0.62959
 if len(sys.argv) <= 1:
@@ -298,10 +295,6 @@ df = sqldf(sql)
 enchants = {}
 for row in df.itertuples():
     enchant_id = row.EnchantID
-    if enchant_id == 1898 and row.SpellID == 27964:
-        # https://www.wowhead.com/wotlk/spell=27964/enchant-weapon-major-spirit
-        # is wrongly marked as enchanting Lifestealing.
-        enchant_id = 1183
 
     spell_id = row.SpellID
     item_id = None if math.isnan(row.ItemID) else int(row.ItemID)
