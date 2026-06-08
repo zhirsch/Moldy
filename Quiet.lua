@@ -10,7 +10,7 @@ local function Toggle(name)
 	else
 		if not ChatFrame_ContainsChannel(DEFAULT_CHAT_FRAME, name) then
 			Moldy:Printf("Enabling %s", name)
-			ChatFrame_AddChannel(DEFAULT_CHAT_FRAME, name)
+			DEFAULT_CHAT_FRAME:AddChannel(name)
 		end
 	end
 end
