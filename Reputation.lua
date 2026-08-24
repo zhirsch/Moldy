@@ -109,10 +109,10 @@ function MoldyReputation:HideTooltip(...)
 end
 
 function MoldyReputation:ShowReputationDetails(...)
-    local _, link = ...
+    local _, link, text, button = ...
     local factionId = ParseLink(link)
     if not factionId then
-        ChatFrame_OnHyperlinkShow(...)
+        SetItemRef(link, text, button)
         return
     end
     ToggleCharacter("ReputationFrame", true)
