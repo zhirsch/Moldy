@@ -1,25 +1,26 @@
 ## Interface: 50504
 ## Title: Moldy
-## Dependencies: Questie, TomTom
+## Dependencies: TomTom
 
 embeds.xml
 
 Moldy.lua
 
-AutoRoll.lua
 ChatSounds.lua
 CircularBuffer.lua
 Deformat.lua
 Enchants.lua
 Enchants_data.lua
-GearScore.lua
 GuildColors.lua
-#Loot.lua
 MerchantSearch.lua
-#Midsummer.lua
 Quiet.lua
-#ReforgeTooltip.lua
 Reputation.lua
 ShamanColor.lua
 ShowCaster.lua
-XP.lua
+
+#AutoRoll.lua
+#GearScore.lua
+#Loot.lua
+#Midsummer.lua
+#ReforgeTooltip.lua
+#XP.lua

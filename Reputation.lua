@@ -62,15 +62,7 @@ end
 
 local function MakeLink(factionId)
     local name = GetFactionInfoByID(factionId)
-    return LinkUtil.FormatLink("moldyfaction", "[" .. name .. "]", factionId)
-end
-
-local function ParseLink(link)
-    local factionId = link:match("^moldyfaction:(%d+)$")
-    if not factionId then
-        return
-    end
-    return tonumber(factionId)
+    return LinkUtil.FormatLink("addon", "[" .. name .. "]", "MoldyReputation:"..factionId)
 end
 
 function MoldyReputation:ReputationChangeFilter(_, _, chatmsg, ...)
@@ -84,38 +76,6 @@ function MoldyReputation:ReputationChangeFilter(_, _, chatmsg, ...)
     local link = MakeLink(factionId)
     local newchatmsg = string.format("%s %+d (%s)", link, change, standing)
     return false, newchatmsg, ...
-end
-
-function MoldyReputation:ShowTooltip(_, link, ...)
-    local factionId = ParseLink(link)
-    if not factionId then
-        return
-    end
-
-    local faction, description = GetFactionInfoByID(factionId)
-    local standing = GetStanding(factionId)
-    local sessionTotal = self.stats.session[factionId] and self.stats.session[factionId].total or 0
-
-    GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR", 0, 20)
-    GameTooltip:AddLine(faction)
-    GameTooltip:AddLine(description, 1, 1, 1, 1)
-    GameTooltip_AddBlankLineToTooltip(GameTooltip)
-    GameTooltip:AddDoubleLine(standing, string.format("%+d", sessionTotal))
-    GameTooltip:Show()
-end
-
-function MoldyReputation:HideTooltip(...)
-    GameTooltip:Hide()
-end
-
-function MoldyReputation:ShowReputationDetails(...)
-    local _, link, text, button = ...
-    local factionId = ParseLink(link)
-    if not factionId then
-        SetItemRef(link, text, button)
-        return
-    end
-    ToggleCharacter("ReputationFrame", true)
 end
 
 function MoldyReputation:CHAT_MSG_COMBAT_FACTION_CHANGE(event, chatmsg, ...)
@@ -134,18 +94,21 @@ function MoldyReputation:OnEnable()
     ChatFrame_AddMessageEventFilter("CHAT_MSG_COMBAT_FACTION_CHANGE", function(...)
         return self:ReputationChangeFilter(...)
     end)
-    for i = 1, NUM_CHAT_WINDOWS do
-        local frame = _G["ChatFrame" .. i]
-        if frame then
-            frame:SetScript("OnHyperlinkEnter", function(...)
-                self:ShowTooltip(...)
-            end)
-            frame:SetScript("OnHyperlinkLeave", function(...)
-                self:HideTooltip(...)
-            end)
-            frame:SetScript("OnHyperlinkClick", function(...)
-                self:ShowReputationDetails(...)
-            end)
-        end
-    end
+    EventRegistry:RegisterCallback("SetItemRef", function(_, link, text, button, chatFrame)
+        local linkType, addonName, factionId = strsplit(":", link)
+        if linkType ~= "addon" then return end
+        if addonName ~= "MoldyReputation" then return end
+
+        local faction, description = GetFactionInfoByID(factionId)
+        local standing = GetStanding(factionId)
+        local sessionTotal = self.stats.session[factionId] and self.stats.session[factionId].total or 0
+
+        GameTooltip:SetOwner(UIParent, "ANCHOR_CURSOR")
+        GameTooltip:ClearLines()
+        GameTooltip:AddLine(faction)
+        GameTooltip:AddLine(description, 1, 1, 1, 1)
+        GameTooltip_AddBlankLineToTooltip(GameTooltip)
+        GameTooltip:AddDoubleLine(standing, string.format("%+d", sessionTotal))
+        GameTooltip:Show()
+    end)
 end
