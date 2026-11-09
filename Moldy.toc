@@ -1,6 +1,5 @@
-## Interface: 50504
+## Interface: 16001
 ## Title: Moldy
-## Dependencies: TomTom
 
 embeds.xml
 
